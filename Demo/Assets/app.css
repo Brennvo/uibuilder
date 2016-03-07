@@ -1,0 +1,80 @@
+﻿body {
+  font-family: 'segoe-ui', 'arial', 'helvetica', 'sans-serif';
+}
+
+div {
+  box-sizing: border-box;
+}
+
+.panel, .login-panel {
+  background-color: #ebf1f5;
+}
+
+button {
+  background-color: #0072C6;
+  color: white;
+  border: none;
+  padding: 5px 25px 5px 25px;
+}
+
+button:hover {
+  background-color: #0081e0;
+}
+
+.login-panel {
+  display: inline-block;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+.login-panel .button-panel {
+  margin-top: 10px;
+  text-align: right;
+}
+
+.login-panel .button-panel button {
+  margin-left: 5px;
+}
+
+.login-panel label {
+    display: inline-block;
+    min-width: 100px;
+}
+
+.login-panel input {
+    width: 200px;
+}
+
+.login-panel .dialog-row {
+    margin-bottom: 5px;
+}
+
+.product .product-photo {
+  display: inline-block;
+}
+
+.product .product-photo img {
+  width: 150px;
+  height: 100px;
+}
+
+.product .product-details {
+  background-color: #ebf1f5;
+  width: 150px;
+  vertical-align: top;
+  display: inline-block;
+  height: 100px;
+  padding: 7px;
+}
+
+.product .product-name {
+  font-size: 20px;
+  color: #444;
+}
+
+.product .product-price {
+  font-size: 14px;
+  color: #666;
+}

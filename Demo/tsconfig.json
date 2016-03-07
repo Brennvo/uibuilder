@@ -1,0 +1,8 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "out": "Generated/demo.js",
+    "jsx": "react",
+    "reactNamespace": "UIBuilder"
+  }
+}

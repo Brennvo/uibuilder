@@ -1,0 +1,7 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "out": "../output/uibuilder-1.0.js",
+    "declaration": true
+  }
+}
