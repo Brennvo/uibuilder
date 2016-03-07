@@ -87,7 +87,7 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <PropertyGroup>
-    <PreBuildEvent>copy $(SolutionDir)output\*.js $(ProjectDir)Libs\.
-copy $(SolutionDir)output\*.ts $(ProjectDir)typings\uibuilder\.</PreBuildEvent>
+    <PreBuildEvent>copy $(SolutionDir)Release\*.js $(ProjectDir)Libs\.
+copy $(SolutionDir)Release\*.ts $(ProjectDir)typings\uibuilder\.</PreBuildEvent>
   </PropertyGroup>
 </Project>
