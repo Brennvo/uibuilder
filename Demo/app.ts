@@ -2,6 +2,8 @@
 
 module Demo {
     export class DemoApp {
+        private tabs = ["Store", "Products", "Support"];
+
         constructor(private $appBody: JQuery) {
             var products = [
                 new Models.Product('Hello Kitty', '$45.00', 'Assets/product1.png'),
@@ -11,8 +13,17 @@ module Demo {
 
             let panel = Views.loginPanel("wisercoder@gmail.com");
             let list = Views.renderProductList(products);
+            $appBody.append(UIBuilder.createElement<Views.TabsProps>(Views.Tabs, {
+                tabs: this.tabs,
+                selectedIndex: 0,
+                onTabSelected: index => this.onTabSelected(index)
+            }));
             $appBody.append(panel);
             $appBody.append(list);
+        }
+
+        private onTabSelected(index: number): void {
+            console.log(`${this.tabs[index]} tab selected`);
         }
     }
 }

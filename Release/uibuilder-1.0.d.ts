@@ -4,5 +4,5 @@ declare module UIBuilder {
         constructor(props: T);
         render(): Node;
     }
-    function createElement(type: any, props: any, ...children: any[]): Node;
+    function createElement<T>(type: any, props: T, ...children: any[]): HTMLElement;
 }
