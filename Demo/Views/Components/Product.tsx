@@ -1,4 +1,4 @@
-﻿/// <reference path="../../typings/uibuilder/uibuilder-1.0.d.ts" />
+﻿/// <reference path="../../typings/uibuilder/uibuilder-1.1.d.ts" />
 /// <reference path="../../Models/Product.ts" />
 
 module Demo.Views {
