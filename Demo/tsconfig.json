@@ -2,6 +2,7 @@
   "compileOnSave": true,
   "compilerOptions": {
     "out": "Generated/demo.js",
+    "sourceMap": true,
     "jsx": "react",
     "reactNamespace": "UIBuilder"
   }

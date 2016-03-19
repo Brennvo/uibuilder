@@ -1,13 +1,23 @@
-﻿/// <reference path="../typings/uibuilder/uibuilder-1.1.d.ts" />
+﻿/// <reference path="../typings/uibuilder/uibuilder-1.2.d.ts" />
 /// <reference path="../Models/Product.ts" />
 
 module Demo.Views {
-    export function renderProductList(products: Models.Product[]): HTMLElement {
-        var items = products.map(p => <Product product={p} />);
-        return (
-            <div className="product-list">
-                {items}
-            </div>
-        );
+    export interface ProductListProps extends UIBuilder.Props {
+        products: Models.Product[];
+    }
+
+    export class ProductList extends UIBuilder.Component<ProductListProps> {
+        constructor(props: ProductListProps) {
+            super(props);
+        }
+
+        public render(): HTMLElement {
+            var items = this.props.products.map(p => <Product product={p} />);
+            return (
+                <div className="product-list">
+                    {items}
+                </div>
+            );
+        }
     }
 }

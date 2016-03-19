@@ -11,15 +11,14 @@ module Demo {
                 new Models.Product('Trinket Box', '$63.00', 'Assets/product3.png')
             ];
 
-            let panel = Views.loginPanel("wisercoder@gmail.com");
-            let list = Views.renderProductList(products);
             $appBody.append(UIBuilder.createElement<Views.TabsProps>(Views.Tabs, {
                 tabs: this.tabs,
                 selectedIndex: 0,
                 onTabSelected: index => this.onTabSelected(index)
             }));
-            $appBody.append(panel);
-            $appBody.append(list);
+
+            var page = Demo.Views.demoPage("wisercoder@gmail.com", products);
+            $appBody.append(page);
         }
 
         private onTabSelected(index: number): void {

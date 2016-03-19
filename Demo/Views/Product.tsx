@@ -1,5 +1,5 @@
-﻿/// <reference path="../../typings/uibuilder/uibuilder-1.1.d.ts" />
-/// <reference path="../../Models/Product.ts" />
+﻿/// <reference path="../typings/uibuilder/uibuilder-1.2.d.ts" />
+/// <reference path="../Models/Product.ts" />
 
 module Demo.Views {
     interface ProductProps {

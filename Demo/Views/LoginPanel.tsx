@@ -1,4 +1,4 @@
-﻿/// <reference path="../typings/uibuilder/uibuilder-1.1.d.ts" />
+﻿/// <reference path="../typings/uibuilder/uibuilder-1.2.d.ts" />
 
 module Demo.Views {
     export function loginPanel(userId: string): HTMLElement {

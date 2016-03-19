@@ -1,47 +1,63 @@
 ﻿module UIBuilder {
-    export class Component<T> {
-        constructor(protected props: T) {
+    export class Component<P> {
+        constructor(protected props: P) {
         }
 
-        public render(): Node {
+        public render(): HTMLElement {
             return null;
         }
     }
 
-    export function createElement<T>(type: any, props: T, ...children: any[]): HTMLElement {
-        let node = makeNode(type, props);
-        for (let child of children) {
-            if (child instanceof Node) {
-                node.appendChild(child);
-            }
-            else if (Array.isArray(child)) {
-                for (let item of child) {
-                    node.appendChild(item);
+    export interface Props {
+        children?: any;
+    }
+
+    export function createElement<P extends UIBuilder.Props>(type: any, props: P, ...children: any[]): HTMLElement {
+        let node: HTMLElement;
+        if (typeof type === 'function') {
+            let _props = clone(props);
+            _props.children = children;
+            let component: Component<P> = new type(_props);
+            node = component.render();
+        }
+        else {
+            node = document.createElement(type);
+            applyProps(node, props);
+            for (let child of children) {
+                if (child instanceof Node) {
+                    node.appendChild(child);
                 }
-            }
-            else {
-                node.appendChild(document.createTextNode(child));
+                else if (Array.isArray(child)) {   // example: <div>{items}</div>
+                    for (let item of child) {
+                        node.appendChild(item);
+                    }
+                }
+                else {
+                    node.appendChild(document.createTextNode(child));
+                }
             }
         }
         return node;
     }
 
-    function makeNode(type: any, props: any): HTMLElement {
-        if (typeof type === 'function') {
-            let component = new type(props);
-            return component.render();
-        }
-        else {
-            let node = document.createElement(type);
-            applyProps(node, props);
-            return node;
-        }
-    }
-
     function applyProps(node: HTMLElement, props: any): void {
         for (let prop in props) {
-            if (eventMap.hasOwnProperty(prop)) {
+            if (prop === 'ref') {
+                if (typeof props[prop] === 'function') {
+                    props[prop](node);
+                }
+                else {
+                    throw new Error("'prop' must be a function");
+                }
+            }
+            else if (eventMap.hasOwnProperty(prop)) {
                 node[eventMap[prop]] = props[prop];
+            }
+            else if (prop === 'style') {
+                let style = props[prop];
+                for (let styleName in style) {
+                    node.style[styleName] = style[styleName];
+                }
             }
             else {
                 let attrib = attribMap.hasOwnProperty(prop) ? attribMap[prop] : prop;

@@ -22,10 +22,10 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\app.css" />
     <Content Include="Assets\product1.png" />
     <Content Include="Assets\product2.png" />
     <Content Include="Assets\product3.png" />
+    <Content Include="Assets\style.css" />
     <Content Include="Generated\demo.js" />
     <Content Include="index.html" />
     <Content Include="Libs\jquery-2.2.0.js" />
@@ -37,13 +37,18 @@
     <TypeScriptCompile Include="Models\Product.ts" />
     <TypeScriptCompile Include="typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="typings\uibuilder\uibuilder-1.1.d.ts" />
-    <TypeScriptCompile Include="Views\Components\Tabs.tsx" />
+    <TypeScriptCompile Include="Views\Reusable\Dropdown.tsx" />
+    <TypeScriptCompile Include="Views\Reusable\Keys.ts" />
+    <TypeScriptCompile Include="Views\Reusable\PopupMenu.tsx" />
+    <TypeScriptCompile Include="Views\Reusable\Tabs.tsx" />
+    <TypeScriptCompile Include="Views\DemoPage.tsx" />
     <TypeScriptCompile Include="Views\LoginPanel.tsx" />
-    <TypeScriptCompile Include="Views\Components\Product.tsx" />
+    <TypeScriptCompile Include="Views\Product.tsx" />
     <TypeScriptCompile Include="Views\ProductList.tsx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="tsconfig.json" />
+    <Content Include="Assets\style.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

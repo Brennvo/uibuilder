@@ -15,40 +15,53 @@ var UIBuilder;
         for (var _i = 2; _i < arguments.length; _i++) {
             children[_i - 2] = arguments[_i];
         }
-        var node = makeNode(type, props);
-        for (var _a = 0, children_1 = children; _a < children_1.length; _a++) {
-            var child = children_1[_a];
-            if (child instanceof Node) {
-                node.appendChild(child);
-            }
-            else if (Array.isArray(child)) {
-                for (var _b = 0, child_1 = child; _b < child_1.length; _b++) {
-                    var item = child_1[_b];
-                    node.appendChild(item);
+        var node;
+        if (typeof type === 'function') {
+            var _props = UIBuilder.clone(props);
+            _props.children = children;
+            var component = new type(_props);
+            node = component.render();
+        }
+        else {
+            node = document.createElement(type);
+            applyProps(node, props);
+            for (var _a = 0, children_1 = children; _a < children_1.length; _a++) {
+                var child = children_1[_a];
+                if (child instanceof Node) {
+                    node.appendChild(child);
                 }
-            }
-            else {
-                node.appendChild(document.createTextNode(child));
+                else if (Array.isArray(child)) {
+                    for (var _b = 0, child_1 = child; _b < child_1.length; _b++) {
+                        var item = child_1[_b];
+                        node.appendChild(item);
+                    }
+                }
+                else {
+                    node.appendChild(document.createTextNode(child));
+                }
             }
         }
         return node;
     }
     UIBuilder.createElement = createElement;
-    function makeNode(type, props) {
-        if (typeof type === 'function') {
-            var component = new type(props);
-            return component.render();
-        }
-        else {
-            var node = document.createElement(type);
-            applyProps(node, props);
-            return node;
-        }
-    }
     function applyProps(node, props) {
         for (var prop in props) {
-            if (eventMap.hasOwnProperty(prop)) {
+            if (prop === 'ref') {
+                if (typeof props[prop] === 'function') {
+                    props[prop](node);
+                }
+                else {
+                    throw new Error("'prop' must be a function");
+                }
+            }
+            else if (eventMap.hasOwnProperty(prop)) {
                 node[eventMap[prop]] = props[prop];
+            }
+            else if (prop === 'style') {
+                var style = props[prop];
+                for (var styleName in style) {
+                    node.style[styleName] = style[styleName];
+                }
             }
             else {
                 var attrib = attribMap.hasOwnProperty(prop) ? attribMap[prop] : prop;
@@ -135,4 +148,17 @@ var UIBuilder;
         'onLoad': 'onload',
         'onError': 'onerror'
     };
+})(UIBuilder || (UIBuilder = {}));
+var UIBuilder;
+(function (UIBuilder) {
+    function clone(obj) {
+        var target = {};
+        for (var field in obj) {
+            if (obj.hasOwnProperty(field)) {
+                target[field] = obj[field];
+            }
+        }
+        return target;
+    }
+    UIBuilder.clone = clone;
 })(UIBuilder || (UIBuilder = {}));
