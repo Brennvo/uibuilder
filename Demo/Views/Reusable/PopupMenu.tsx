@@ -27,7 +27,7 @@ module Demo.Views {
                     $items.removeClass('current').eq(currentIndex).addClass('current');
                     break;
                 case KeyCodes.UpArrow:
-                    currentIndex = (currentIndex === -1 || currentIndex == 0) ? ($items.length - 1) : (currentIndex - 1);
+                    currentIndex = (currentIndex === -1 || currentIndex === 0) ? ($items.length - 1) : (currentIndex - 1);
                     $items.removeClass('current').eq(currentIndex).addClass('current');
                     break;
                 case KeyCodes.Escape:
