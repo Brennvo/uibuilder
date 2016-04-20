@@ -7,7 +7,7 @@ module Demo.Views {
     }
 
     /**
-     * A dropdown control has exactly one child which will the dropdown will initially hide.
+     * A dropdown control has exactly one child which the dropdown will initially hide.
      * The child will be shown when the dropdown button is clicked.
      * The child must be focusable and it will be given focus when shown.
      * The child must be set to position: absolute so that it will be displayed over adjacent elements.

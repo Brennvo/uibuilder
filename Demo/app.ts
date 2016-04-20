@@ -26,7 +26,3 @@ module Demo {
         }
     }
 }
-
-$(() => {
-    new Demo.DemoApp($("#app-body"));
-});
