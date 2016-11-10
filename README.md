@@ -23,6 +23,10 @@ Unlike React.js UIBuilder is just a templating library and so does not do automa
 #### Why not just use React?
 UIBuilder is just a templating library and is therefore much simpler than React. UIBuilder is not a framework, so it doesn't control the behavior of the application---you do.
 
+UIBuilder creates real DOM nodes, not virtual nodes, which makes it easier to implement advanced features such as drag & drop and animation.
+
+Unlike React, UIBuilder is compatible with [Web Components](https://www.w3.org/standards/techs/components#w3c_all).
+
 UIBuilder does not use any React.js code.
 
 ## License
