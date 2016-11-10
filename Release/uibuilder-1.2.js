@@ -123,7 +123,7 @@ var UIBuilder;
             node = component.render();
         }
         else {
-            if (svgElements.some(function (svgElement) { return type == svgElement; })) {
+            if (svgElements.some(function (svgElement) { return type === svgElement; })) {
                 node = document.createElementNS("http://www.w3.org/2000/svg", type);
             }
             else {

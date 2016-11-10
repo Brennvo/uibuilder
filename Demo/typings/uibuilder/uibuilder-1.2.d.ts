@@ -7,7 +7,7 @@ declare module UIBuilder {
     interface Props {
         children?: any;
     }
-    function createElement<P extends UIBuilder.Props>(type: any, props: P, ...children: any[]): HTMLElement | SVGAElement;
+    function createElement<P extends UIBuilder.Props>(type: any, props: P, ...children: any[]): HTMLElement | SVGElement;
 }
 declare module UIBuilder {
     function clone<T>(obj: T): T;

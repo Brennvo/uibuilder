@@ -1,5 +1,4 @@
 ﻿module UIBuilder {
-
     const attribMap = {
         'htmlFor': 'for',
         'className': 'class',
@@ -116,8 +115,8 @@
         children?: any;
     }
 
-    export function createElement<P extends UIBuilder.Props>(type: any, props: P, ...children: any[]): HTMLElement|SVGAElement {
-        let node: HTMLElement|SVGAElement;
+    export function createElement<P extends UIBuilder.Props>(type: any, props: P, ...children: any[]): HTMLElement|SVGElement {
+        let node: HTMLElement|SVGElement;
         if (typeof type === 'function') {
             let _props = clone(props);
             _props.children = children;
@@ -125,10 +124,10 @@
             node = component.render();
         }
         else {
-
-            if(svgElements.some(svgElement => type == svgElement)){ // type is an svg element
+            if (svgElements.some(svgElement => type === svgElement)) {
                 node = document.createElementNS("http://www.w3.org/2000/svg", type);
-            } else{
+            }
+            else {
                 node = document.createElement(type);
             }
             applyProps(node, props);
@@ -149,7 +148,7 @@
         return node;
     }
 
-    function applyProps(node: HTMLElement|SVGAElement, props: any): void {
+    function applyProps(node: HTMLElement|SVGElement, props: any): void {
         for (let prop in props) {
             if (prop === 'ref') {
                 if (typeof props[prop] === 'function') {
@@ -165,7 +164,7 @@
             else if (prop === 'style') {
                 let style = props[prop];
                 for (let styleName in style) {
-                    node.style[styleName] = style[styleName];
+                    (<HTMLElement>node).style[styleName] = style[styleName];
                 }
             }
             else {
@@ -174,5 +173,4 @@
             }
         }
     }
-
 }
