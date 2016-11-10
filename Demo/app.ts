@@ -17,7 +17,7 @@ module Demo {
                 onTabSelected: index => this.onTabSelected(index)
             }));
 
-            var page = Demo.Views.demoPage("wisercoder@gmail.com", products);
+            var page = Demo.Views.demoPage("someone@example.com", products);
             $appBody.append(page);
         }
 

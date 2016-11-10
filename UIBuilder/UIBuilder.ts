@@ -122,6 +122,7 @@
             _props.children = children;
             let component: Component<P> = new type(_props);
             node = component.render();
+            applyComponentProps(node, props);
         }
         else {
             if (svgElements.some(svgElement => type === svgElement)) {
@@ -155,7 +156,7 @@
                     props[prop](node);
                 }
                 else {
-                    throw new Error("'prop' must be a function");
+                    throw new Error("'ref' must be a function");
                 }
             }
             else if (eventMap.hasOwnProperty(prop)) {
@@ -170,6 +171,19 @@
             else {
                 let attrib = attribMap.hasOwnProperty(prop) ? attribMap[prop] : prop;
                 node.setAttribute(attrib, props[prop]);
+            }
+        }
+    }
+
+    function applyComponentProps(node: HTMLElement, props: any): void {
+        for (let prop in props) {
+            if (prop === 'ref') {
+                if (typeof props[prop] === 'function') {
+                    props[prop](node);
+                }
+                else {
+                    throw new Error("'ref' must be a function");
+                }
             }
         }
     }

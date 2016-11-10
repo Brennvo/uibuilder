@@ -121,6 +121,7 @@ var UIBuilder;
             _props.children = children;
             var component = new type(_props);
             node = component.render();
+            applyComponentProps(node, props);
         }
         else {
             if (svgElements.some(function (svgElement) { return type === svgElement; })) {
@@ -156,7 +157,7 @@ var UIBuilder;
                     props[prop](node);
                 }
                 else {
-                    throw new Error("'prop' must be a function");
+                    throw new Error("'ref' must be a function");
                 }
             }
             else if (eventMap.hasOwnProperty(prop)) {
@@ -171,6 +172,18 @@ var UIBuilder;
             else {
                 var attrib = attribMap.hasOwnProperty(prop) ? attribMap[prop] : prop;
                 node.setAttribute(attrib, props[prop]);
+            }
+        }
+    }
+    function applyComponentProps(node, props) {
+        for (var prop in props) {
+            if (prop === 'ref') {
+                if (typeof props[prop] === 'function') {
+                    props[prop](node);
+                }
+                else {
+                    throw new Error("'ref' must be a function");
+                }
             }
         }
     }
