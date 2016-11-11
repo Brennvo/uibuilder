@@ -23,8 +23,8 @@ Unlike React.js UIBuilder is just a templating library and so does not do automa
 Divide your page into multiple components. When data changes just replace the component that contains stale data. For example, you can update just a single component on your page like this:
 
 ```typescript
-        const element = UIBuilder.createElement<CustomerPanelProps>(CustomerPanel, { customerInfo: updatedCustomerInfo });
-        $page.find(".customer-panel").replaceWith(element);
+ const element = UIBuilder.createElement<CustomerPanelProps>(CustomerPanel, { customerInfo: updatedCustomerInfo });
+ $page.find(".customer-panel").replaceWith(element);
 ```
 
 #### Why not just use React?
