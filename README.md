@@ -20,6 +20,13 @@ TypeScript compiler is needed to compile TSX files. Visual Studio is not needed.
 ## What it doesn't do
 Unlike React.js UIBuilder is just a templating library and so does not do automatic screen updates. When using UIBuilder you typically use jQuery to update the screen manually.
 
+Divide your page into multiple components. When data changes just replace the component that contains stale data. For example, you can update just a single component on your page like this:
+
+```typescript
+        const element = UIBuilder.createElement<CustomerPanelProps>(CustomerPanel, { customerInfo: updatedCustomerInfo });
+        $page.find(".customer-panel").replaceWith(element);
+```
+
 #### Why not just use React?
 UIBuilder is just a templating library and is therefore much simpler than React. UIBuilder is not a framework, so it doesn't control the behavior of the application---you do.
 

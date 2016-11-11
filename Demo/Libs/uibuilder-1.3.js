@@ -139,10 +139,12 @@ var UIBuilder;
                 else if (Array.isArray(child)) {
                     for (var _b = 0, child_1 = child; _b < child_1.length; _b++) {
                         var item = child_1[_b];
-                        node.appendChild(item);
+                        if (item) {
+                            node.appendChild(item);
+                        }
                     }
                 }
-                else {
+                else if (child) {
                     node.appendChild(document.createTextNode(child));
                 }
             }

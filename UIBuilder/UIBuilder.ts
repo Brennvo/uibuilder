@@ -138,10 +138,12 @@
                 }
                 else if (Array.isArray(child)) {   // example: <div>{items}</div>
                     for (let item of child) {
-                        node.appendChild(item);
+                        if (item) {
+                            node.appendChild(item);
+                        }
                     }
                 }
-                else {
+                else if (child) {
                     node.appendChild(document.createTextNode(child));
                 }
             }
