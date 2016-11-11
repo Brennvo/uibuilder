@@ -80,27 +80,27 @@
         'onError': 'onerror'
     };
 
-    const svgElements = [
-        'circle',
-        'clipPath',
-        'defs',
-        'ellipse',
-        'g',
-        'image',
-        'line',
-        'linearGradient',
-        'mask',
-        'path',
-        'pattern',
-        'polygon',
-        'polyline',
-        'radialGradient',
-        'rect',
-        'stop',
-        'svg',
-        'text',
-        'tspan'
-    ];
+    const svgElements = {
+        'circle': true,
+        'clipPath': true,
+        'defs': true,
+        'ellipse': true,
+        'g': true,
+        'image': true,
+        'line': true,
+        'linearGradient': true,
+        'mask': true,
+        'path': true,
+        'pattern': true,
+        'polygon': true,
+        'polyline': true,
+        'radialGradient': true,
+        'rect': true,
+        'stop': true,
+        'svg': true,
+        'text': true,
+        'tspan': true
+    };
 
     export class Component<P> {
         constructor(protected props: P) {
@@ -115,8 +115,8 @@
         children?: any;
     }
 
-    export function createElement<P extends UIBuilder.Props>(type: any, props: P, ...children: any[]): HTMLElement|SVGElement {
-        let node: HTMLElement|SVGElement;
+    export function createElement<P extends UIBuilder.Props>(type: any, props: P, ...children: any[]): HTMLElement | SVGElement {
+        let node: HTMLElement | SVGElement;
         if (typeof type === 'function') {
             let _props = clone(props);
             _props.children = children;
@@ -125,7 +125,7 @@
             applyComponentProps(node, props);
         }
         else {
-            if (svgElements.some(svgElement => type === svgElement)) {
+            if (svgElements[type]) {
                 node = document.createElementNS("http://www.w3.org/2000/svg", type);
             }
             else {
@@ -151,7 +151,7 @@
         return node;
     }
 
-    function applyProps(node: HTMLElement|SVGElement, props: any): void {
+    function applyProps(node: HTMLElement | SVGElement, props: Object): void {
         for (let prop in props) {
             if (prop === 'ref') {
                 if (typeof props[prop] === 'function') {
@@ -177,15 +177,14 @@
         }
     }
 
-    function applyComponentProps(node: HTMLElement, props: any): void {
-        for (let prop in props) {
-            if (prop === 'ref') {
-                if (typeof props[prop] === 'function') {
-                    props[prop](node);
-                }
-                else {
-                    throw new Error("'ref' must be a function");
-                }
+    function applyComponentProps(node: HTMLElement, props: Object): void {
+        const ref = props['ref'];
+        if (ref) {
+            if (typeof ref === 'function') {
+                ref(node);
+            }
+            else {
+                throw new Error("'ref' must be a function");
             }
         }
     }

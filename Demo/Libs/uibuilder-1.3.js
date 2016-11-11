@@ -79,27 +79,27 @@ var UIBuilder;
         'onLoad': 'onload',
         'onError': 'onerror'
     };
-    var svgElements = [
-        'circle',
-        'clipPath',
-        'defs',
-        'ellipse',
-        'g',
-        'image',
-        'line',
-        'linearGradient',
-        'mask',
-        'path',
-        'pattern',
-        'polygon',
-        'polyline',
-        'radialGradient',
-        'rect',
-        'stop',
-        'svg',
-        'text',
-        'tspan'
-    ];
+    var svgElements = {
+        'circle': true,
+        'clipPath': true,
+        'defs': true,
+        'ellipse': true,
+        'g': true,
+        'image': true,
+        'line': true,
+        'linearGradient': true,
+        'mask': true,
+        'path': true,
+        'pattern': true,
+        'polygon': true,
+        'polyline': true,
+        'radialGradient': true,
+        'rect': true,
+        'stop': true,
+        'svg': true,
+        'text': true,
+        'tspan': true
+    };
     var Component = (function () {
         function Component(props) {
             this.props = props;
@@ -124,7 +124,7 @@ var UIBuilder;
             applyComponentProps(node, props);
         }
         else {
-            if (svgElements.some(function (svgElement) { return type === svgElement; })) {
+            if (svgElements[type]) {
                 node = document.createElementNS("http://www.w3.org/2000/svg", type);
             }
             else {
@@ -178,14 +178,13 @@ var UIBuilder;
         }
     }
     function applyComponentProps(node, props) {
-        for (var prop in props) {
-            if (prop === 'ref') {
-                if (typeof props[prop] === 'function') {
-                    props[prop](node);
-                }
-                else {
-                    throw new Error("'ref' must be a function");
-                }
+        var ref = props['ref'];
+        if (ref) {
+            if (typeof ref === 'function') {
+                ref(node);
+            }
+            else {
+                throw new Error("'ref' must be a function");
             }
         }
     }
