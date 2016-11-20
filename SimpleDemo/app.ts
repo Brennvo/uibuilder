@@ -1,11 +1,11 @@
 ﻿/// <reference path="typings/jquery/jquery.d.ts" />
 
-module Demo {
+namespace Demo {
     export class DemoApp {
         private tabs = ["Store", "Products", "Support"];
 
         constructor(private $appBody: JQuery) {
-            var products = [
+            const products = [
                 new Models.Product('Hello Kitty', '$45.00', 'Assets/product1.png'),
                 new Models.Product('Piggy Bank', '$57.00', 'Assets/product2.png'),
                 new Models.Product('Trinket Box', '$63.00', 'Assets/product3.png')
@@ -17,7 +17,7 @@ module Demo {
                 onTabSelected: index => this.onTabSelected(index)
             }));
 
-            var page = Demo.Views.demoPage("someone@example.com", products);
+            const page = Demo.Views.demoPage("someone@example.com", products);
             $appBody.append(page);
         }
 

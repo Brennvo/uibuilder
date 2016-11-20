@@ -1,4 +1,4 @@
-declare module UIBuilder {
+declare namespace UIBuilder {
     class Component<P> {
         protected props: P;
         constructor(props: P);
@@ -9,6 +9,6 @@ declare module UIBuilder {
     }
     function createElement<P extends UIBuilder.Props>(type: any, props: P, ...children: any[]): HTMLElement | SVGElement;
 }
-declare module UIBuilder {
+declare namespace UIBuilder {
     function clone<T>(obj: T): T;
 }

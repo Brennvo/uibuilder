@@ -1,5 +1,5 @@
-﻿module Demo.Views {
-    export enum KeyCodes {
+﻿namespace Demo.Views {
+    export const enum KeyCodes {
         Backspace = 8,
         Tab = 9,
         Enter = 13,

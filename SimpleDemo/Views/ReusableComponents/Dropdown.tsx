@@ -1,7 +1,7 @@
 ﻿/// <reference path="../../typings/uibuilder/uibuilder-1.3.d.ts" />
 /// <reference path="../../typings/jquery/jquery.d.ts" />
 
-module Demo.Views {
+namespace Demo.Views {
     export interface DropdownProps extends UIBuilder.Props {
         title: string;
     }

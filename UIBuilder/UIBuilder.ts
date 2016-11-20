@@ -1,4 +1,4 @@
-﻿module UIBuilder {
+﻿namespace UIBuilder {
     const attribMap = {
         'htmlFor': 'for',
         'className': 'class',

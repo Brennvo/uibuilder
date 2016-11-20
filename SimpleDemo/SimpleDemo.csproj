@@ -28,7 +28,7 @@
     <Content Include="Assets\style.css" />
     <Content Include="Generated\demo.js" />
     <Content Include="index.html" />
-    <Content Include="Libs\jquery-2.2.0.js" />
+    <Content Include="Libs\jquery-3.1.1.js" />
     <Content Include="Libs\uibuilder-1.3.js" />
     <Content Include="web.config" />
   </ItemGroup>
@@ -37,10 +37,10 @@
     <TypeScriptCompile Include="Models\Product.ts" />
     <TypeScriptCompile Include="typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="typings\uibuilder\uibuilder-1.3.d.ts" />
-    <TypeScriptCompile Include="Views\Reusable\Dropdown.tsx" />
-    <TypeScriptCompile Include="Views\Reusable\Keys.ts" />
-    <TypeScriptCompile Include="Views\Reusable\PopupMenu.tsx" />
-    <TypeScriptCompile Include="Views\Reusable\Tabs.tsx" />
+    <TypeScriptCompile Include="Views\ReusableComponents\Dropdown.tsx" />
+    <TypeScriptCompile Include="Views\ReusableComponents\Keys.ts" />
+    <TypeScriptCompile Include="Views\ReusableComponents\PopupMenu.tsx" />
+    <TypeScriptCompile Include="Views\ReusableComponents\Tabs.tsx" />
     <TypeScriptCompile Include="Views\DemoPage.tsx" />
     <TypeScriptCompile Include="Views\LoginPanel.tsx" />
     <TypeScriptCompile Include="Views\Product.tsx" />

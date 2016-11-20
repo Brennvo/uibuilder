@@ -1,7 +1,7 @@
 ﻿/// <reference path="../../typings/uibuilder/uibuilder-1.3.d.ts" />
 /// <reference path="../../typings/jquery/jquery.d.ts" />
 
-module Demo.Views {
+namespace Demo.Views {
     export interface PopupMenuProps extends UIBuilder.Props {
         onMenuItemSelected: ($item: JQuery) => void;
     }
@@ -18,8 +18,8 @@ module Demo.Views {
         }
 
         private onKeyDown(event: KeyboardEvent): void {
-            let $items = this.$el.find('.menu-item');
-            let $current = this.$el.find('.current');
+            const $items = this.$el.find('.menu-item');
+            const $current = this.$el.find('.current');
             let currentIndex = $items.index($current);
             switch (event.keyCode) {
                 case KeyCodes.DownArrow:
@@ -44,7 +44,7 @@ module Demo.Views {
         }
 
         private onMouseOver(event: Event): void {
-            let $item = $(event.target);
+            const $item = $(event.target);
             if ($item.hasClass('menu-item')) {
                 this.$el.find('.menu-item').removeClass('current');
                 $item.addClass('current');
@@ -52,7 +52,7 @@ module Demo.Views {
         }
 
         private onClick(event: Event): void {
-            var $item = $(event.target);
+            const $item = $(event.target);
             if ($item.hasClass('menu-item')) {
                 this.$el.hide();
                 this.props.onMenuItemSelected($item);

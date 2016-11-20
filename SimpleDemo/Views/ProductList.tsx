@@ -1,7 +1,7 @@
 ﻿/// <reference path="../typings/uibuilder/uibuilder-1.3.d.ts" />
 /// <reference path="../Models/Product.ts" />
 
-module Demo.Views {
+namespace Demo.Views {
     export interface ProductListProps extends UIBuilder.Props {
         products: Models.Product[];
     }
@@ -12,7 +12,7 @@ module Demo.Views {
         }
 
         public render(): HTMLElement {
-            var items = this.props.products.map(p => <Product product={p} />);
+            const items = this.props.products.map(p => <Product product={p} />);
             return (
                 <div className="product-list">
                     {items}
