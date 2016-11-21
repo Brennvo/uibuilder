@@ -170,9 +170,8 @@ var UIBuilder;
                 node.addEventListener(prop, value);
             }
             else if (prop === 'style') {
-                var style = value;
-                for (var styleName in style) {
-                    node.style[styleName] = style[styleName];
+                for (var styleName in value) {
+                    node.style[styleName] = value[styleName];
                 }
             }
             else {

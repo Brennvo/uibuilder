@@ -128,7 +128,7 @@
             this.finalizeItem(text);
             ev.preventDefault();
 
-            const event = new CustomEvent('itemadded', { detail: text });
+            const event = new CustomEvent('onitemadded', { detail: text });
             this.dispatchEvent(event);
         }
         else {

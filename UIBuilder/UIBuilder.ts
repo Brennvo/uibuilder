@@ -169,9 +169,8 @@
                 node.addEventListener(prop, value);
             }
             else if (prop === 'style') {
-                const style = value;
-                for (const styleName in style) {
-                    (<HTMLElement>node).style[styleName] = style[styleName];
+                for (const styleName in value) {
+                    (<HTMLElement>node).style[styleName] = value[styleName];
                 }
             }
             else {

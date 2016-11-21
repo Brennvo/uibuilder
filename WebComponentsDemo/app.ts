@@ -16,7 +16,7 @@
 
             $(appContainer).on('click', '#set', () => this.onSetClick());
             $(appContainer).on('click', '#get', () => this.onGetClick());
-            $('#artists').on('itemadded', ev => this.onItemAdded(ev));
+            $('#artists').on('onitemadded', ev => this.onItemAdded(ev));
         }
 
         private onItemAdded(ev: JQueryEventObject): void {
