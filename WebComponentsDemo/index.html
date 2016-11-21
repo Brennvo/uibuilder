@@ -5,12 +5,21 @@
     <meta charset="utf-8" />
     <title>Web Components Demo</title>
     <script src="Libs/jquery-3.1.1.js"></script>
+    <script src="Libs/uibuilder-1.4.js"></script>
     <link rel="stylesheet" href="Assets/font-awesome.min.css" type="text/css" />
     <link rel="import" href="elements/zx-listeditor.html" />
     <link rel="stylesheet" href="Assets/app.css" type="text/css" />
+    <script src="Views/DemoPage.js"></script>
     <script src="app.js"></script>
 </head>
 <body>
     <div id="app-container"></div>
+    <div class="browser-warning">
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+        This demo requires a browser that supports 
+        <a href="https://www.w3.org/standards/techs/components">Web Components</a>.
+        As of November 2016, only Chrome and Opera meet this requirement.
+        More information can be found on <a href="http://webcomponents.org/">webcomponents.org</a>
+    </div>
 </body>
 </html>

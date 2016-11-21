@@ -29,14 +29,14 @@
     <Content Include="Generated\demo.js" />
     <Content Include="index.html" />
     <Content Include="Libs\jquery-3.1.1.js" />
-    <Content Include="Libs\uibuilder-1.3.js" />
+    <Content Include="Libs\uibuilder-1.4.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="Models\Product.ts" />
     <TypeScriptCompile Include="typings\jquery\jquery.d.ts" />
-    <TypeScriptCompile Include="typings\uibuilder\uibuilder-1.3.d.ts" />
+    <TypeScriptCompile Include="typings\uibuilder\uibuilder-1.4.d.ts" />
     <TypeScriptCompile Include="Views\ReusableComponents\Dropdown.tsx" />
     <TypeScriptCompile Include="Views\ReusableComponents\Keys.ts" />
     <TypeScriptCompile Include="Views\ReusableComponents\PopupMenu.tsx" />

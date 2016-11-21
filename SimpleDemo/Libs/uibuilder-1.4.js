@@ -139,7 +139,7 @@ var UIBuilder;
                 else if (Array.isArray(child)) {
                     for (var _b = 0, child_1 = child; _b < child_1.length; _b++) {
                         var item = child_1[_b];
-                        if (item) {
+                        if (item instanceof Node) {
                             node.appendChild(item);
                         }
                     }
@@ -154,26 +154,35 @@ var UIBuilder;
     UIBuilder.createElement = createElement;
     function applyProps(node, props) {
         for (var prop in props) {
+            var value = props[prop];
             if (prop === 'ref') {
-                if (typeof props[prop] === 'function') {
-                    props[prop](node);
+                if (typeof value === 'function') {
+                    value(node);
                 }
                 else {
                     throw new Error("'ref' must be a function");
                 }
             }
             else if (eventMap.hasOwnProperty(prop)) {
-                node[eventMap[prop]] = props[prop];
+                node[eventMap[prop]] = value;
+            }
+            else if (typeof value === 'function') {
+                node.addEventListener(prop, value);
             }
             else if (prop === 'style') {
-                var style = props[prop];
+                var style = value;
                 for (var styleName in style) {
                     node.style[styleName] = style[styleName];
                 }
             }
             else {
-                var attrib = attribMap.hasOwnProperty(prop) ? attribMap[prop] : prop;
-                node.setAttribute(attrib, props[prop]);
+                var name_1 = attribMap.hasOwnProperty(prop) ? attribMap[prop] : prop;
+                if (name_1 in node) {
+                    node[name_1] = value; // value is set without any type conversion
+                }
+                else {
+                    node.setAttribute(name_1, value); // value will be converted to string
+                }
             }
         }
     }

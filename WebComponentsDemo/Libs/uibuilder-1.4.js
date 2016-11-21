@@ -1,12 +1,12 @@
-﻿namespace UIBuilder {
-    const attribMap = {
+var UIBuilder;
+(function (UIBuilder) {
+    var attribMap = {
         'htmlFor': 'for',
         'className': 'class',
         'defaultValue': 'value',
         'defaultChecked': 'checked'
     };
-
-    const eventMap = {
+    var eventMap = {
         // Clipboard events
         'onCopy': 'oncopy',
         'onCut': 'oncut',
@@ -79,8 +79,7 @@
         'onLoad': 'onload',
         'onError': 'onerror'
     };
-
-    const svgElements = {
+    var svgElements = {
         'circle': true,
         'clipPath': true,
         'defs': true,
@@ -101,26 +100,26 @@
         'text': true,
         'tspan': true
     };
-
-    export class Component<P> {
-        constructor(protected props: P) {
+    var Component = (function () {
+        function Component(props) {
+            this.props = props;
         }
-
-        public render(): HTMLElement {
+        Component.prototype.render = function () {
             return null;
+        };
+        return Component;
+    }());
+    UIBuilder.Component = Component;
+    function createElement(type, props) {
+        var children = [];
+        for (var _i = 2; _i < arguments.length; _i++) {
+            children[_i - 2] = arguments[_i];
         }
-    }
-
-    export interface Props {
-        children?: any;
-    }
-
-    export function createElement<P extends UIBuilder.Props>(type: any, props: P, ...children: any[]): HTMLElement | SVGElement {
-        let node: HTMLElement | SVGElement;
+        var node;
         if (typeof type === 'function') {
-            const _props = clone(props);
+            var _props = UIBuilder.clone(props);
             _props.children = children;
-            const component: Component<P> = new type(_props);
+            var component = new type(_props);
             node = component.render();
             applyComponentProps(node, props);
         }
@@ -132,12 +131,14 @@
                 node = document.createElement(type);
             }
             applyProps(node, props);
-            for (const child of children) {
+            for (var _a = 0, children_1 = children; _a < children_1.length; _a++) {
+                var child = children_1[_a];
                 if (child instanceof Node) {
                     node.appendChild(child);
                 }
-                else if (Array.isArray(child)) {   // example: <div>{items}</div>
-                    for (const item of child) {
+                else if (Array.isArray(child)) {
+                    for (var _b = 0, child_1 = child; _b < child_1.length; _b++) {
+                        var item = child_1[_b];
                         if (item instanceof Node) {
                             node.appendChild(item);
                         }
@@ -150,10 +151,10 @@
         }
         return node;
     }
-
-    function applyProps(node: HTMLElement | SVGElement, props: Object): void {
-        for (const prop in props) {
-            const value = props[prop];
+    UIBuilder.createElement = createElement;
+    function applyProps(node, props) {
+        for (var prop in props) {
+            var value = props[prop];
             if (prop === 'ref') {
                 if (typeof value === 'function') {
                     value(node);
@@ -169,25 +170,24 @@
                 node.addEventListener(prop, value);
             }
             else if (prop === 'style') {
-                const style = value;
-                for (const styleName in style) {
-                    (<HTMLElement>node).style[styleName] = style[styleName];
+                var style = value;
+                for (var styleName in style) {
+                    node.style[styleName] = style[styleName];
                 }
             }
             else {
-                const name = attribMap.hasOwnProperty(prop) ? attribMap[prop] : prop;
-                if (name in node) {
-                    node[name] = value;   // value is set without any type conversion
+                var name_1 = attribMap.hasOwnProperty(prop) ? attribMap[prop] : prop;
+                if (name_1 in node) {
+                    node[name_1] = value; // value is set without any type conversion
                 }
                 else {
-                    node.setAttribute(name, value);   // value will be converted to string
+                    node.setAttribute(name_1, value); // value will be converted to string
                 }
             }
         }
     }
-
-    function applyComponentProps(node: HTMLElement, props: Object): void {
-        const ref = props['ref'];
+    function applyComponentProps(node, props) {
+        var ref = props['ref'];
         if (ref) {
             if (typeof ref === 'function') {
                 ref(node);
@@ -197,4 +197,17 @@
             }
         }
     }
-}
+})(UIBuilder || (UIBuilder = {}));
+var UIBuilder;
+(function (UIBuilder) {
+    function clone(obj) {
+        var target = {};
+        for (var field in obj) {
+            if (obj.hasOwnProperty(field)) {
+                target[field] = obj[field];
+            }
+        }
+        return target;
+    }
+    UIBuilder.clone = clone;
+})(UIBuilder || (UIBuilder = {}));

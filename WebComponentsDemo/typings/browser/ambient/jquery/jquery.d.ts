@@ -1279,7 +1279,7 @@ interface JQuery {
      * @param propertyName The name of the property to set.
      * @param value A value to set for the property.
      */
-    prop(propertyName: string, value: string|number|boolean): JQuery;
+    prop(propertyName: string, value: any): JQuery;
     /**
      * Set one or more properties for the set of matched elements.
      *

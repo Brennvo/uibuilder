@@ -2,6 +2,7 @@
     private $container: JQuery;
     private $textInput: JQuery;
     private minInputWidth = 75;
+    private _items: any[];
 
     private static ownerDocument = document.currentScript.ownerDocument;
 
@@ -13,7 +14,22 @@
         this.shadowRoot.appendChild(instance);
     }
 
-    public connectedCallback() {
+    public get items(): any[] {
+        if (this.isConnected) {
+            const $items = this.$container.find('.item');
+            this._items = $items.toArray().map(item => $(item).text());
+        }
+        return this._items;
+    }
+
+    public set items(value: any[]) {
+        this._items = value;
+        if (this.isConnected) {
+            this.displayItems();
+        }
+    }
+
+    public connectedCallback(): void {
         this.$container = $(this.shadowRoot).find('.container');
         this.$textInput = this.$container.find("input[type=text]");
 
@@ -22,11 +38,20 @@
         this.$container.on('click', ev => this.onContainerClick(ev));
         this.$container.on('click', '.delete-item-button', ev => this.onDeleteItem(ev));
 
+        this.displayItems();
+
         this.resizeTextInput();
     }
 
-    public disconnectedCallback() {
+    public disconnectedCallback(): void {
         this.$container.off();
+    }
+
+    private displayItems(): void {
+        this.$container.find('.item').remove();
+        if (this._items instanceof Array) {
+            this._items.forEach(item => this.finalizeItem(item));
+        }
     }
 
     private onContainerClick(ev: JQueryEventObject): void {
@@ -102,6 +127,9 @@
         else if (this.isValidItemSeparator(text, ev.which)) {
             this.finalizeItem(text);
             ev.preventDefault();
+
+            const event = new CustomEvent('itemadded', { detail: text });
+            this.dispatchEvent(event);
         }
         else {
             this.deselectAll();
@@ -112,8 +140,11 @@
         this.$container.find('.selected-item').removeClass('selected-item');
     }
 
-    private finalizeItem(text: string): void {
-        const $item = this.createItem(text);
+    private finalizeItem(item: any): void {
+        if (!item) {
+            return;
+        }
+        const $item = this.createItem(item.toString());
         $item.insertBefore(this.$textInput);
         this.$textInput.val('');
         this.resizeTextInput();
@@ -152,7 +183,7 @@
         if (!text.length) {
             return false;
         }
-        return key === KeyCodes.Semicolon || key === KeyCodes.Enter;
+        return key === KeyCodes.Comma || key === KeyCodes.Enter;
     }
 }
 
