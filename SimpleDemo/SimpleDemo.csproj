@@ -29,14 +29,14 @@
     <Content Include="Generated\demo.js" />
     <Content Include="index.html" />
     <Content Include="Libs\jquery-3.1.1.js" />
-    <Content Include="Libs\uibuilder-1.4.js" />
+    <Content Include="Libs\uibuilder-1.4.1.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="Models\Product.ts" />
     <TypeScriptCompile Include="typings\jquery\jquery.d.ts" />
-    <TypeScriptCompile Include="typings\uibuilder\uibuilder-1.4.d.ts" />
+    <TypeScriptCompile Include="typings\uibuilder\uibuilder-1.4.1.d.ts" />
     <TypeScriptCompile Include="Views\ReusableComponents\Dropdown.tsx" />
     <TypeScriptCompile Include="Views\ReusableComponents\Keys.ts" />
     <TypeScriptCompile Include="Views\ReusableComponents\PopupMenu.tsx" />
@@ -93,7 +93,7 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <PropertyGroup>
-    <PreBuildEvent>copy $(SolutionDir)Release\*.js $(ProjectDir)Libs\.
-copy $(SolutionDir)Release\*.ts $(ProjectDir)typings\uibuilder\.</PreBuildEvent>
+    <PreBuildEvent>copy $(SolutionDir)dist\*.js $(ProjectDir)Libs\.
+copy $(SolutionDir)dist\*.ts $(ProjectDir)typings\uibuilder\.</PreBuildEvent>
   </PropertyGroup>
 </Project>

@@ -54,9 +54,7 @@ Web Components also support multiple [named slots](https://developers.google.com
 
 Web Components are a W3 open standard. React is is opensource but it has a patent rider with what is known as a ["strong retaliation clause"](http://www.rosenlaw.com/lj9.htm).
 
-UIBuilder creates real DOM nodes, not virtual nodes, which makes it easier to implement advanced features that require manipulating the DOM directly, such as drag & drop and animation.
-
-It is also easier to integrate with DOM-mutating libraries such as d3.js and take full advantage of its features, such as transitions.
+UIBuilder creates real DOM nodes, not virtual nodes, which makes it easier to implement advanced features that require manipulating the DOM directly, such as drag & drop and animation. It is also easier to integrate with DOM-mutating libraries such as d3.js and take full advantage of its features, such as transitions.
 
 UIBuilder does not use any React.js code.
 

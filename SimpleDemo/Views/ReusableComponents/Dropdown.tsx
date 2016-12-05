@@ -1,4 +1,4 @@
-﻿/// <reference path="../../typings/uibuilder/uibuilder-1.4.d.ts" />
+﻿/// <reference path="../../typings/uibuilder/uibuilder-1.4.1.d.ts" />
 /// <reference path="../../typings/jquery/jquery.d.ts" />
 
 namespace Demo.Views {

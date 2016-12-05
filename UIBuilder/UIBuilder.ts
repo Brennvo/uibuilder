@@ -116,6 +116,7 @@
     }
 
     export function createElement<P extends UIBuilder.Props>(type: any, props: P, ...children: any[]): HTMLElement | SVGElement {
+        props = props || <P>{};
         let node: HTMLElement | SVGElement;
         if (typeof type === 'function') {
             const _props = clone(props);

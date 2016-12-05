@@ -27,6 +27,7 @@
     <Content Include="elements\zx-listeditor.html" />
     <Content Include="index.html" />
     <Content Include="Libs\jquery-3.1.1.js" />
+    <Content Include="Libs\uibuilder-1.4.1.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -39,7 +40,7 @@
   <ItemGroup>
     <Content Include="tsconfig.json" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
-    <TypeScriptCompile Include="typings\browser\ambient\uibuilder\uibuilder-1.4.d.ts" />
+    <TypeScriptCompile Include="typings\browser\ambient\uibuilder\uibuilder-1.4.1.d.ts" />
     <TypeScriptCompile Include="Views\DemoPage.tsx" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
@@ -85,8 +86,8 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <PropertyGroup>
-    <PreBuildEvent>copy $(SolutionDir)Release\*.js $(ProjectDir)Libs\.
-copy $(SolutionDir)Release\*.ts $(ProjectDir)typings\browser\ambient\uibuilder\.
+    <PreBuildEvent>copy $(SolutionDir)dist\*.js $(ProjectDir)Libs\.
+copy $(SolutionDir)dist\*.ts $(ProjectDir)typings\browser\ambient\uibuilder\.
 </PreBuildEvent>
   </PropertyGroup>
 </Project>

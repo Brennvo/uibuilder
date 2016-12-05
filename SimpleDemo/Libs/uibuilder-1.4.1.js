@@ -115,6 +115,7 @@ var UIBuilder;
         for (var _i = 2; _i < arguments.length; _i++) {
             children[_i - 2] = arguments[_i];
         }
+        props = props || {};
         var node;
         if (typeof type === 'function') {
             var _props = UIBuilder.clone(props);
