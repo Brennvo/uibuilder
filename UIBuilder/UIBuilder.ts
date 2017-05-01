@@ -123,7 +123,7 @@
             _props.children = children;
             const component: Component<P> = new type(_props);
             node = component.render();
-            applyProps(node, props);
+            applyComponentProps(node, props);
         }
         else {
             if (svgElements[type]) {
@@ -182,6 +182,18 @@
                 else {
                     node.setAttribute(name, value);   // value will be converted to string
                 }
+            }
+        }
+    }
+
+    function applyComponentProps(node: HTMLElement, props: Object): void {
+        const ref = props['ref'];
+        if (ref) {
+            if (typeof ref === 'function') {
+                ref(node);
+            }
+            else {
+                throw new Error("'ref' must be a function");
             }
         }
     }

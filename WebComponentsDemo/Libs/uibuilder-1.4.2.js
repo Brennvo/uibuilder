@@ -122,7 +122,7 @@ var UIBuilder;
             _props.children = children;
             var component = new type(_props);
             node = component.render();
-            applyProps(node, props);
+            applyComponentProps(node, props);
         }
         else {
             if (svgElements[type]) {
@@ -183,6 +183,17 @@ var UIBuilder;
                 else {
                     node.setAttribute(name_1, value); // value will be converted to string
                 }
+            }
+        }
+    }
+    function applyComponentProps(node, props) {
+        var ref = props['ref'];
+        if (ref) {
+            if (typeof ref === 'function') {
+                ref(node);
+            }
+            else {
+                throw new Error("'ref' must be a function");
             }
         }
     }
