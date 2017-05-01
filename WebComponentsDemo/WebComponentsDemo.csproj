@@ -33,7 +33,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="elements\KeyCodes.ts" />
-    <TypeScriptCompile Include="elements\ZxListEditor.ts" />
+    <TypeScriptCompile Include="elements\ZxListEditor.tsx" />
     <TypeScriptCompile Include="typings\browser\ambient\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="typings\browser\ambient\shadow-dom\index.d.ts" />
   </ItemGroup>

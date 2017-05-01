@@ -9,9 +9,17 @@
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
+
         const template = ZxListEditor.ownerDocument.querySelector('template');
         const instance = template.content.cloneNode(true) as HTMLElement;
         this.shadowRoot.appendChild(instance);
+
+        const container = (
+            <div class="container" tabindex="0">
+                <input type="text" />
+            </div>
+        );
+        this.shadowRoot.appendChild(container);
     }
 
     public get items(): any[] {
@@ -144,8 +152,8 @@
         if (!item) {
             return;
         }
-        const $item = this.createItem(item.toString());
-        $item.insertBefore(this.$textInput);
+        const el = this.createItemElement(item.toString());
+        $(el).insertBefore(this.$textInput);
         this.$textInput.val('');
         this.resizeTextInput();
         this.scrollToBottom();
@@ -165,10 +173,13 @@
         }
     }
 
-    private createItem(text: string): JQuery {
-        const $text = $('<span></span>').text(text);
-        const $button = $('<span class="delete-item-button"></span>');
-        return $('<div class="item"></div>').append($text).append($button);
+    private createItemElement(text: string): Element {
+        return (
+            <div class="item">
+                <span>{text}</span>
+                <span class="delete-item-button"></span>
+            </div>
+        );
     }
 
     private resizeTextInput(): void {

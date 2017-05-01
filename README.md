@@ -15,7 +15,7 @@ Web Components are user interface widgets that are written once and can be reuse
 
 Web Components are a W3 standard. The W3 page for Web Components can be found [here](https://www.w3.org/standards/techs/components).
 
-Note: Shadow DOM is currently implemented in Chrome, Opera and Safari. Firefox support is in development and [Edge will also support Shadow DOM](https://developer.microsoft.com/en-us/microsoft-edge/platform/status/shadowdom/). In the meantime you can use [Polymer](https://www.polymer-project.org) to build custom elements.
+Note: Shadow DOM is currently implemented in Chrome, Opera and Safari. Firefox support is in development and [Edge will also support Shadow DOM](https://developer.microsoft.com/en-us/microsoft-edge/platform/status/shadowdom/). In the meantime you can use a [polyfill](https://github.com/webcomponents/).
 
 If you are not interested in Web Components you can still use UIBuilder as a template library.
 
@@ -52,7 +52,7 @@ Unlike React, UIBuilder is compatible with [Web Components](https://www.w3.org/s
 
 Web Components also support multiple [named slots](https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom#composition_slot) for placing child elements. React components have just one, unnamed slot.
 
-Web Components are a W3 open standard. React is is opensource but it has a patent rider with what is known as a ["strong retaliation clause"](http://www.rosenlaw.com/lj9.htm).
+Web Components are a W3 open standard. React is opensource but it has a patent rider with what is known as a ["strong retaliation clause"](http://www.rosenlaw.com/lj9.htm).
 
 UIBuilder creates real DOM nodes, not virtual nodes, which makes it easier to implement advanced features that require manipulating the DOM directly, such as drag & drop and animation. It is also easier to integrate with DOM-mutating libraries such as d3.js and take full advantage of its features, such as transitions.
 
