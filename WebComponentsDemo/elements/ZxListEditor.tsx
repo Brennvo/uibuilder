@@ -10,16 +10,16 @@
         super();
         this.attachShadow({ mode: 'open' });
 
-        const template = ZxListEditor.ownerDocument.querySelector('template');
-        const instance = template.content.cloneNode(true) as HTMLElement;
-        this.shadowRoot.appendChild(instance);
-
         const container = (
             <div class="container" tabindex="0">
                 <input type="text" />
             </div>
         );
         this.shadowRoot.appendChild(container);
+
+        $.ajax('elements/ZxListEditor.css').done(css => {
+            this.shadowRoot.appendChild(<style>{css}</style>);
+        });
     }
 
     public get items(): any[] {
