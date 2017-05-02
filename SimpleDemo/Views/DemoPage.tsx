@@ -1,6 +1,4 @@
-﻿/// <reference path="../typings/uibuilder/uibuilder-1.4.2.d.ts" />
-
-namespace Demo.Views {
+﻿namespace Demo.Views {
     function onMenuItemSelected($item: JQuery): void {
         console.log(`menu item clicked: ${$item.text()}`);
     }

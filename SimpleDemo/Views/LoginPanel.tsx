@@ -1,6 +1,4 @@
-﻿/// <reference path="../typings/uibuilder/uibuilder-1.4.2.d.ts" />
-
-namespace Demo.Views {
+﻿namespace Demo.Views {
     export function loginPanel(userId: string): HTMLElement {
         return (
             <div className="login-panel">

@@ -1,5 +1,4 @@
-﻿/// <reference path="../../typings/uibuilder/uibuilder-1.4.2.d.ts" />
-/// <reference path="../../typings/jquery/jquery.d.ts" />
+﻿/// <reference path="../../typings/jquery/jquery.d.ts" />
 
 namespace Demo.Views {
     export interface PopupMenuProps extends UIBuilder.Props {
