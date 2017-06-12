@@ -169,14 +169,14 @@
             else if (typeof value === 'function') {
                 node.addEventListener(prop, value);
             }
-            else if (prop === 'style') {
+            else if (prop === 'style' && typeof value === 'object') {
                 for (const styleName in value) {
                     (<HTMLElement>node).style[styleName] = value[styleName];
                 }
             }
             else {
                 const name = attribMap.hasOwnProperty(prop) ? attribMap[prop] : prop;
-                if (name in node) {
+                if (name in node && typeof value === 'object') {
                     node[name] = value;   // value is set without any type conversion
                 }
                 else {

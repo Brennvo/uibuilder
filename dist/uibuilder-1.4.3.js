@@ -170,14 +170,14 @@ var UIBuilder;
             else if (typeof value === 'function') {
                 node.addEventListener(prop, value);
             }
-            else if (prop === 'style') {
+            else if (prop === 'style' && typeof value === 'object') {
                 for (var styleName in value) {
                     node.style[styleName] = value[styleName];
                 }
             }
             else {
                 var name_1 = attribMap.hasOwnProperty(prop) ? attribMap[prop] : prop;
-                if (name_1 in node) {
+                if (name_1 in node && typeof value === 'object') {
                     node[name_1] = value; // value is set without any type conversion
                 }
                 else {
