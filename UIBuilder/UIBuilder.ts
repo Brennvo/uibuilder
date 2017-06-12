@@ -132,7 +132,7 @@
             else {
                 node = document.createElement(type);
             }
-            applyProps(node, props);
+            applyElementProps(node, props);
             for (const child of children) {
                 if (child instanceof Node) {
                     node.appendChild(child);
@@ -152,7 +152,7 @@
         return node;
     }
 
-    function applyProps(node: HTMLElement | SVGElement, props: Object): void {
+    function applyElementProps(node: HTMLElement | SVGElement, props: Object): void {
         for (const prop in props) {
             const value = props[prop];
             if (prop === 'ref') {
@@ -177,6 +177,7 @@
             else {
                 const name = attribMap.hasOwnProperty(prop) ? attribMap[prop] : prop;
                 if (name in node && typeof value === 'object') {
+                    // pass object-valued attributes to Web Components
                     node[name] = value;   // value is set without any type conversion
                 }
                 else {

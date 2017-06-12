@@ -131,7 +131,7 @@ var UIBuilder;
             else {
                 node = document.createElement(type);
             }
-            applyProps(node, props);
+            applyElementProps(node, props);
             for (var _a = 0, children_1 = children; _a < children_1.length; _a++) {
                 var child = children_1[_a];
                 if (child instanceof Node) {
@@ -153,7 +153,7 @@ var UIBuilder;
         return node;
     }
     UIBuilder.createElement = createElement;
-    function applyProps(node, props) {
+    function applyElementProps(node, props) {
         for (var prop in props) {
             var value = props[prop];
             if (prop === 'ref') {
@@ -178,6 +178,7 @@ var UIBuilder;
             else {
                 var name_1 = attribMap.hasOwnProperty(prop) ? attribMap[prop] : prop;
                 if (name_1 in node && typeof value === 'object') {
+                    // pass object-valued attributes to Web Components
                     node[name_1] = value; // value is set without any type conversion
                 }
                 else {
