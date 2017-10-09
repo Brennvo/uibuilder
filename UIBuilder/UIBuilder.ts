@@ -142,6 +142,9 @@
                         if (item instanceof Node) {
                             node.appendChild(item);
                         }
+                        else if (item) {
+                            node.appendChild(document.createTextNode(item));
+                        }
                     }
                 }
                 else if (child) {
