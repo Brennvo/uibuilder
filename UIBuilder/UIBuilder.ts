@@ -158,6 +158,8 @@
     function applyElementProps(node: HTMLElement | SVGElement, props: Object): void {
         for (const prop in props) {
             const value = props[prop];
+            if (!value && (typeof value === 'undefined' || typeof value === 'object'))   // Note: typeof null is object
+                continue;
             if (prop === 'ref') {
                 if (typeof value === 'function') {
                     value(node);
