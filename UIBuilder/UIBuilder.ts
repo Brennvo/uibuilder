@@ -142,12 +142,12 @@
                         if (item instanceof Node) {
                             node.appendChild(item);
                         }
-                        else if (item) {
+                        else if (item || (typeof item !== 'undefined' && typeof item !== 'object')) {
                             node.appendChild(document.createTextNode(item));
                         }
                     }
                 }
-                else if (child) {
+                else if (child || (typeof child !== 'undefined' && typeof child !== 'object')) {
                     node.appendChild(document.createTextNode(child));
                 }
             }

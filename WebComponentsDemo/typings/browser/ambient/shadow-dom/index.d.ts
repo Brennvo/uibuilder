@@ -1,8 +1,4 @@
-﻿interface Window {
-    customElements: any;
-}
-
-interface Element {
+﻿interface Element {
     content: any;
 }
 

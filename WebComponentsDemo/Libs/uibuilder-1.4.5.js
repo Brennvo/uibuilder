@@ -100,7 +100,7 @@ var UIBuilder;
         'text': true,
         'tspan': true
     };
-    var Component = (function () {
+    var Component = /** @class */ (function () {
         function Component(props) {
             this.props = props;
         }
@@ -143,9 +143,12 @@ var UIBuilder;
                         if (item instanceof Node) {
                             node.appendChild(item);
                         }
+                        else if (item || (typeof item !== 'undefined' && typeof item !== 'object')) {
+                            node.appendChild(document.createTextNode(item));
+                        }
                     }
                 }
-                else if (child) {
+                else if (child || (typeof child !== 'undefined' && typeof child !== 'object')) {
                     node.appendChild(document.createTextNode(child));
                 }
             }
@@ -156,6 +159,8 @@ var UIBuilder;
     function applyElementProps(node, props) {
         for (var prop in props) {
             var value = props[prop];
+            if (!value && (typeof value === 'undefined' || typeof value === 'object'))
+                continue;
             if (prop === 'ref') {
                 if (typeof value === 'function') {
                     value(node);

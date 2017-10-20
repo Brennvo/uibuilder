@@ -10,13 +10,14 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <TypeScriptToolsVersion>2.1</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -29,7 +30,7 @@
     <Content Include="Generated\demo.js" />
     <Content Include="index.html" />
     <Content Include="Libs\jquery-3.1.1.js" />
-    <Content Include="Libs\uibuilder-1.4.3.js" />
+    <Content Include="Libs\uibuilder-1.4.5.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
