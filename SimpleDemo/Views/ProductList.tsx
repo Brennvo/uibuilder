@@ -1,7 +1,7 @@
 ﻿/// <reference path="../Models/Product.ts" />
 
 namespace Demo.Views {
-    export interface ProductListProps extends UIBuilder.Props {
+    export interface ProductListProps extends UIBuilder.Props<ProductList> {
         products: Models.Product[];
     }
 

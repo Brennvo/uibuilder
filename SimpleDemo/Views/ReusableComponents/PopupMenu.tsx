@@ -1,7 +1,7 @@
 ﻿/// <reference path="../../typings/jquery/jquery.d.ts" />
 
 namespace Demo.Views {
-    export interface PopupMenuProps extends UIBuilder.Props {
+    export interface PopupMenuProps extends UIBuilder.Props<PopupMenu> {
         onMenuItemSelected: ($item: JQuery) => void;
     }
 

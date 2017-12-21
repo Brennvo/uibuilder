@@ -111,11 +111,12 @@
         }
     }
 
-    export interface Props {
+    export interface Props<T> {
         children?: any;
+        ref?: (instance: T) => void;
     }
 
-    export function createElement<P extends UIBuilder.Props>(type: any, props: P, ...children: any[]): HTMLElement | SVGElement {
+    export function createElement<P extends UIBuilder.Props<Component<P>>>(type: any, props: P, ...children: any[]): HTMLElement | SVGElement {
         props = props || <P>{};
         let node: HTMLElement | SVGElement;
         if (typeof type === 'function') {
@@ -123,7 +124,7 @@
             _props.children = children;
             const component: Component<P> = new type(_props);
             node = component.render();
-            applyComponentProps(node, props);
+            applyComponentProps<P>(component, props);
         }
         else {
             if (svgElements[type]) {
@@ -192,11 +193,11 @@
         }
     }
 
-    function applyComponentProps(node: HTMLElement, props: Object): void {
+    function applyComponentProps<P>(component: Component<P>, props: Object): void {
         const ref = props['ref'];
         if (ref) {
             if (typeof ref === 'function') {
-                ref(node);
+                ref(component);
             }
             else {
                 throw new Error("'ref' must be a function");

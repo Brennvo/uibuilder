@@ -1,7 +1,7 @@
 ﻿/// <reference path="../../typings/jquery/jquery.d.ts" />
 
 namespace Demo.Views {
-    export interface DropdownProps extends UIBuilder.Props {
+    export interface DropdownProps extends UIBuilder.Props<Dropdown> {
         title: string;
     }
 

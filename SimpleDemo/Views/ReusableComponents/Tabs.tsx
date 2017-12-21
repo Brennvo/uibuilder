@@ -2,7 +2,7 @@
 /// <reference path="../../Models/Product.ts" />
 
 namespace Demo.Views {
-    export interface TabsProps extends UIBuilder.Props {
+    export interface TabsProps extends UIBuilder.Props<Tabs> {
         tabs: any[];
         selectedIndex: number;
         onTabSelected: (index: number) => void;

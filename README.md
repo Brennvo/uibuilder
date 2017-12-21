@@ -35,7 +35,7 @@ TypeScript compiler is needed to compile TSX files. Visual Studio is not needed.
 * Put breakpoints inside your template
 
 ## What it doesn't do
-Unlike React.js UIBuilder does not automatically update the screen when data changes. 
+Unlike React.js UIBuilder does not do incremental screen updates. 
 
 A valid approach to update the screen is to divide your page into multiple components. When data changes just replace the component that contains stale data. For example, you can update just a single component on your page like this:
 
