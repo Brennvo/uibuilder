@@ -23,7 +23,7 @@ namespace Demo.Views {
             $(this.child).show().focus();
         }
 
-        public render(): HTMLElement {
+        public render(): JSX.Element {
             if (Array.isArray(this.props.children) && this.props.children.length != 1) {
                 throw new Error("Dropdown must have exactly one child.");
             }

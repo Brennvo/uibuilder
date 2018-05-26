@@ -1,5 +1,5 @@
 ﻿namespace Demo.Views {
-    export function loginPanel(userId: string): HTMLElement {
+    export function loginPanel(userId: string): JSX.Element {
         return (
             <div className="login-panel">
                 <div className="dialog-row">

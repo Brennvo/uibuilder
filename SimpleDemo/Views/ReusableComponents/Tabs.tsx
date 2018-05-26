@@ -26,8 +26,8 @@ namespace Demo.Views {
             }
         }
 
-        public render(): HTMLElement {
-            const items = [] as HTMLElement[];
+        public render(): JSX.Element {
+            const items = [] as JSX.Element[];
             for (let i = 0; i < this.props.tabs.length; i++) {
                 const tab = this.props.tabs[i];
                 const className = (i === this.props.selectedIndex) ? "tab selected" : "tab";

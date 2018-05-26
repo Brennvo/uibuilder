@@ -10,7 +10,7 @@ namespace Demo.Views {
             super(props);
         }
 
-        public render(): HTMLElement {
+        public render(): JSX.Element {
             const items = this.props.products.map(p => <Product product={p} />);
             return (
                 <div className="product-list">

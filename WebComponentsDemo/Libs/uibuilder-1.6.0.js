@@ -100,6 +100,7 @@ var UIBuilder;
         'text': true,
         'tspan': true
     };
+    UIBuilder.Fragment = "--fragment--";
     var Component = /** @class */ (function () {
         function Component(props) {
             this.props = props;
@@ -117,12 +118,20 @@ var UIBuilder;
         }
         props = props || {};
         var node;
-        if (typeof type === 'function') {
+        if (type === UIBuilder.Fragment) {
+            return children;
+        }
+        else if (typeof type === 'function') {
             var _props = UIBuilder.clone(props);
             _props.children = children;
-            var component = new type(_props);
-            node = component.render();
-            applyComponentProps(component, props);
+            if (type.prototype.render) {
+                var component = new type(_props);
+                node = component.render();
+                applyComponentProps(component, props);
+            }
+            else {
+                node = type(_props);
+            }
         }
         else {
             if (svgElements[type]) {
@@ -143,12 +152,12 @@ var UIBuilder;
                         if (item instanceof Node) {
                             node.appendChild(item);
                         }
-                        else if (item || (typeof item !== 'undefined' && typeof item !== 'object')) {
+                        else if (item != null) {
                             node.appendChild(document.createTextNode(item));
                         }
                     }
                 }
-                else if (child || (typeof child !== 'undefined' && typeof child !== 'object')) {
+                else if (child != null) {
                     node.appendChild(document.createTextNode(child));
                 }
             }
@@ -159,7 +168,7 @@ var UIBuilder;
     function applyElementProps(node, props) {
         for (var prop in props) {
             var value = props[prop];
-            if (!value && (typeof value === 'undefined' || typeof value === 'object'))
+            if (value == null)
                 continue;
             if (prop === 'ref') {
                 if (typeof value === 'function') {

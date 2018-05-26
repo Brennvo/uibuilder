@@ -102,11 +102,13 @@
         'tspan': true
     };
 
+    export const Fragment = "--fragment--";
+
     export class Component<P> {
         constructor(protected props: P) {
         }
 
-        public render(): HTMLElement {
+        public render(): JSX.Element {
             return null;
         }
     }
@@ -116,15 +118,23 @@
         ref?: (instance: T) => void;
     }
 
-    export function createElement<P extends UIBuilder.Props<Component<P>>>(type: any, props: P, ...children: any[]): HTMLElement | SVGElement {
+    export function createElement<P extends UIBuilder.Props<Component<P>>>(type: any, props: P, ...children: any[]): JSX.Element | JSX.Element[] {
         props = props || <P>{};
-        let node: HTMLElement | SVGElement;
-        if (typeof type === 'function') {
+        let node: JSX.Element;
+        if (type === Fragment) {
+            return children;
+        }
+        else if (typeof type === 'function') {
             const _props = clone(props);
             _props.children = children;
-            const component: Component<P> = new type(_props);
-            node = component.render();
-            applyComponentProps<P>(component, props);
+            if (type.prototype.render) {
+                const component: Component<P> = new type(_props);
+                node = component.render();
+                applyComponentProps<P>(component, props);
+            }
+            else {
+                node = type(_props);
+            }
         }
         else {
             if (svgElements[type]) {
@@ -143,12 +153,12 @@
                         if (item instanceof Node) {
                             node.appendChild(item);
                         }
-                        else if (item || (typeof item !== 'undefined' && typeof item !== 'object')) {
+                        else if (item != null) {   // if item is not null or undefined
                             node.appendChild(document.createTextNode(item));
                         }
                     }
                 }
-                else if (child || (typeof child !== 'undefined' && typeof child !== 'object')) {
+                else if (child != null) {   // if child is not null or undefined
                     node.appendChild(document.createTextNode(child));
                 }
             }
@@ -156,10 +166,10 @@
         return node;
     }
 
-    function applyElementProps(node: HTMLElement | SVGElement, props: Object): void {
+    function applyElementProps(node: JSX.Element, props: Object): void {
         for (const prop in props) {
             const value = props[prop];
-            if (!value && (typeof value === 'undefined' || typeof value === 'object'))   // Note: typeof null is object
+            if (value == null)   // if value is null or undefined
                 continue;
             if (prop === 'ref') {
                 if (typeof value === 'function') {

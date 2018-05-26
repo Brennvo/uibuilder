@@ -10,7 +10,7 @@ namespace Demo.Views {
             super(props);
         }
 
-        public render(): HTMLElement {
+        public render(): JSX.Element {
             return (
                 <div className="product">
                     <div className="product-details">

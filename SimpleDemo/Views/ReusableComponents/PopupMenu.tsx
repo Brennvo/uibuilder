@@ -58,7 +58,7 @@ namespace Demo.Views {
             }
         }
 
-        public render(): HTMLElement {
+        public render(): JSX.Element {
             return (
                 <div className="popup-menu" tabIndex="0"
                     ref={el => this.$el = $(el)}

@@ -3,7 +3,7 @@
         console.log(`item added: ${ev.detail}`);
     }
 
-    export function demoPage(items: string[]): HTMLElement {
+    export function demoPage(items: string[]): JSX.Element {
         return (
             <div className="demo-page">
                 <h1>Web Components Demo</h1>
