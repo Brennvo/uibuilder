@@ -1,6 +1,23 @@
 # UIBuilder
 Typed HTML templates using TypeScript's TSX files.
 
+## Typed Templates
+
+UIBuilder is a HTML templating library in the style of Mustache and Handlebars, for Web application development using TypeScript. Because of compile-time checking and "Intellisense" UIBuilder is a better choice than Mustache or Handlebars.
+
+UIBuilder templates are written using TypeScript's TSX syntax which mixes HTML with TypeScript. If you know HTML and TypeScript you already know TSX. You use regular HTML tags for composing UI elements, and regular TypeScript for loops and conditionals. Building custom elements (Components) is supported.
+
+TypeScript compiler is needed to compile TSX files. Visual Studio is not needed. However, if you use Visual Studio you get benefits such as:
+* Auto-indent
+* Syntax coloring
+* Type checking
+* Intellisense suggestions for TypeScript expressions
+* Refactoring: you can rename variables without worrying about breaking your templates
+* Error checking squiggly lines as you type:
+    * Mismatched HTML tags
+    * TypeScript syntax errors
+* Put breakpoints inside your template
+
 ## JSX for Web Components
 UIBuilder brings the power and convenience of JSX to Web Components.
 
@@ -16,23 +33,6 @@ Web Components are user interface widgets that are written once and can be reuse
 Web Components are a W3 standard. The W3 page for Web Components can be found [here](https://www.w3.org/standards/techs/components).
 
 Note: Shadow DOM is currently implemented in Chrome, Opera and Safari. Firefox support is in development and [Edge will also support Shadow DOM](https://developer.microsoft.com/en-us/microsoft-edge/platform/status/shadowdom/). In the meantime you can use a [polyfill](https://github.com/webcomponents/).
-
-## Typed Templates
-
-Even if you are not interested in Web Components you can still use UIBuilder as a template library. Because of compile-time checking and "Intellisense" UIBuilder is a better choice than Mustache or Handlebars.
-
-UIBuilder templates are written using TypeScript's TSX syntax which mixes HTML with TypeScript. If you know HTML and TypeScript you already know TSX. You use regular HTML tags for composing UI elements, and regular TypeScript for loops and conditionals. Building custom elements (Components) is supported.
-
-TypeScript compiler is needed to compile TSX files. Visual Studio is not needed. However, if you use Visual Studio you get benefits such as:
-* Auto-indent
-* Syntax coloring
-* Type checking
-* Intellisense suggestions for TypeScript expressions
-* Refactoring: you can rename variables without worrying about breaking your templates
-* Error checking squiggly lines as you type:
-    * Mismatched HTML tags
-    * TypeScript syntax errors
-* Put breakpoints inside your template
 
 ## What it doesn't do
 Unlike React.js UIBuilder does not do incremental screen updates. 
