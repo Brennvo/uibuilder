@@ -124,19 +124,19 @@
         if (type === Fragment) {
             return children;
         }
-        else if (typeof type === 'function') {
+        else if (typeof type === 'function') {   // Is it a component class or a functional component?
             const _props = clone(props);
             _props.children = children;
-            if (type.prototype.render) {
+            if (type.prototype.render) {   // Is it a component class?
                 const component: Component<P> = new type(_props);
                 node = component.render();
                 applyComponentProps<P>(component, props);
             }
-            else {
+            else {   // It is a functional component
                 node = type(_props);
             }
         }
-        else {
+        else {   // It is an HTML or SVG element
             if (svgElements[type]) {
                 node = document.createElementNS("http://www.w3.org/2000/svg", type);
             }
@@ -145,12 +145,12 @@
             }
             applyElementProps(node, props);
             for (const child of children) {
-                if (child instanceof Node) {
+                if (child instanceof Node) {   // Is it an HTML or SVG element?
                     node.appendChild(child);
                 }
                 else if (Array.isArray(child)) {   // example: <div>{items}</div>
                     for (const item of child) {
-                        if (item instanceof Node) {
+                        if (item instanceof Node) {   // Is it an HTML or SVG element?
                             node.appendChild(item);
                         }
                         else if (item != null) {   // if item is not null or undefined
@@ -185,7 +185,7 @@
             else if (typeof value === 'function') {
                 node.addEventListener(prop, value);
             }
-            else if (prop === 'style' && typeof value === 'object') {
+            else if (prop === 'style' && typeof value === 'object') {   // Example: <div style={{height: "20px"}}></div>
                 for (const styleName in value) {
                     (<HTMLElement>node).style[styleName] = value[styleName];
                 }
