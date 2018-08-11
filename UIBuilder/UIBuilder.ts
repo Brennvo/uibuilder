@@ -149,14 +149,7 @@
                     node.appendChild(child);
                 }
                 else if (Array.isArray(child)) {   // example: <div>{items}</div>
-                    for (const item of child) {
-                        if (item instanceof Node) {   // Is it an HTML or SVG element?
-                            node.appendChild(item);
-                        }
-                        else if (item != null) {   // if item is not null or undefined
-                            node.appendChild(document.createTextNode(item));
-                        }
-                    }
+                    appendChildrenRecursively(node, child);
                 }
                 else if (child != null) {   // if child is not null or undefined
                     node.appendChild(document.createTextNode(child));
@@ -164,6 +157,20 @@
             }
         }
         return node;
+    }
+
+    function appendChildrenRecursively(node: JSX.Element, children: any[]): void {
+        for (const item of children) {
+            if (item instanceof Node) {   // Is it an HTML or SVG element?
+                node.appendChild(item);
+            }
+            else if (Array.isArray(item)) {   // Is it a fragment?
+                appendChildrenRecursively(node, item);
+            }
+            else if (item != null) {   // if item is not null or undefined
+                node.appendChild(document.createTextNode(item));
+            }
+        }
     }
 
     function applyElementProps(node: JSX.Element, props: Object): void {

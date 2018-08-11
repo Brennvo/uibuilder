@@ -147,15 +147,7 @@ var UIBuilder;
                     node.appendChild(child);
                 }
                 else if (Array.isArray(child)) {
-                    for (var _b = 0, child_1 = child; _b < child_1.length; _b++) {
-                        var item = child_1[_b];
-                        if (item instanceof Node) {
-                            node.appendChild(item);
-                        }
-                        else if (item != null) {
-                            node.appendChild(document.createTextNode(item));
-                        }
-                    }
+                    appendChildrenRecursively(node, child);
                 }
                 else if (child != null) {
                     node.appendChild(document.createTextNode(child));
@@ -165,6 +157,20 @@ var UIBuilder;
         return node;
     }
     UIBuilder.createElement = createElement;
+    function appendChildrenRecursively(node, children) {
+        for (var _i = 0, children_2 = children; _i < children_2.length; _i++) {
+            var item = children_2[_i];
+            if (item instanceof Node) {
+                node.appendChild(item);
+            }
+            else if (Array.isArray(item)) {
+                appendChildrenRecursively(node, item);
+            }
+            else if (item != null) {
+                node.appendChild(document.createTextNode(item));
+            }
+        }
+    }
     function applyElementProps(node, props) {
         for (var prop in props) {
             var value = props[prop];

@@ -8,6 +8,10 @@
             <>
                 <hr />
                 {props.message}
+                <>
+                    <div>hello</div>
+                    <div>world</div>
+                </>
                 <hr />
             </>
         );
