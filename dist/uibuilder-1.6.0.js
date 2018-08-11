@@ -149,6 +149,9 @@ var UIBuilder;
                 else if (Array.isArray(child)) {
                     appendChildrenRecursively(node, child);
                 }
+                else if (child === false) {
+                    // The value false is ignored, to allow conditional display using && operator
+                }
                 else if (child != null) {
                     node.appendChild(document.createTextNode(child));
                 }
@@ -165,6 +168,9 @@ var UIBuilder;
             }
             else if (Array.isArray(item)) {
                 appendChildrenRecursively(node, item);
+            }
+            else if (item === false) {
+                // The value false is ignored, to allow conditional display using && operator
             }
             else if (item != null) {
                 node.appendChild(document.createTextNode(item));

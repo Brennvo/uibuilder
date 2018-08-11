@@ -151,6 +151,9 @@
                 else if (Array.isArray(child)) {   // example: <div>{items}</div>
                     appendChildrenRecursively(node, child);
                 }
+                else if (child === false) {
+                    // The value false is ignored, to allow conditional display using && operator
+                }
                 else if (child != null) {   // if child is not null or undefined
                     node.appendChild(document.createTextNode(child));
                 }
@@ -166,6 +169,9 @@
             }
             else if (Array.isArray(item)) {   // Is it a fragment?
                 appendChildrenRecursively(node, item);
+            }
+            else if (item === false) {
+                // The value false is ignored, to allow conditional display using && operator
             }
             else if (item != null) {   // if item is not null or undefined
                 node.appendChild(document.createTextNode(item));
