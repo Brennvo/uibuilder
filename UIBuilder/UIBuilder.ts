@@ -144,37 +144,24 @@
                 node = document.createElement(type);
             }
             applyElementProps(node, props);
-            for (const child of children) {
-                if (child instanceof Node) {   // Is it an HTML or SVG element?
-                    node.appendChild(child);
-                }
-                else if (Array.isArray(child)) {   // example: <div>{items}</div>
-                    appendChildrenRecursively(node, child);
-                }
-                else if (child === false) {
-                    // The value false is ignored, to allow conditional display using && operator
-                }
-                else if (child != null) {   // if child is not null or undefined
-                    node.appendChild(document.createTextNode(child));
-                }
-            }
+            appendChildrenRecursively(node, children);
         }
         return node;
     }
 
     function appendChildrenRecursively(node: JSX.Element, children: any[]): void {
-        for (const item of children) {
-            if (item instanceof Node) {   // Is it an HTML or SVG element?
-                node.appendChild(item);
+        for (const child of children) {
+            if (child instanceof Node) {   // Is it an HTML or SVG element?
+                node.appendChild(child);
             }
-            else if (Array.isArray(item)) {   // Is it a fragment?
-                appendChildrenRecursively(node, item);
+            else if (Array.isArray(child)) {   // example: <div>{items}</div>
+                appendChildrenRecursively(node, child);
             }
-            else if (item === false) {
+            else if (child === false) {
                 // The value false is ignored, to allow conditional display using && operator
             }
-            else if (item != null) {   // if item is not null or undefined
-                node.appendChild(document.createTextNode(item));
+            else if (child != null) {   // if item is not null or undefined
+                node.appendChild(document.createTextNode(child));
             }
         }
     }

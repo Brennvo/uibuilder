@@ -141,39 +141,25 @@ var UIBuilder;
                 node = document.createElement(type);
             }
             applyElementProps(node, props);
-            for (var _a = 0, children_1 = children; _a < children_1.length; _a++) {
-                var child = children_1[_a];
-                if (child instanceof Node) {
-                    node.appendChild(child);
-                }
-                else if (Array.isArray(child)) {
-                    appendChildrenRecursively(node, child);
-                }
-                else if (child === false) {
-                    // The value false is ignored, to allow conditional display using && operator
-                }
-                else if (child != null) {
-                    node.appendChild(document.createTextNode(child));
-                }
-            }
+            appendChildrenRecursively(node, children);
         }
         return node;
     }
     UIBuilder.createElement = createElement;
     function appendChildrenRecursively(node, children) {
-        for (var _i = 0, children_2 = children; _i < children_2.length; _i++) {
-            var item = children_2[_i];
-            if (item instanceof Node) {
-                node.appendChild(item);
+        for (var _i = 0, children_1 = children; _i < children_1.length; _i++) {
+            var child = children_1[_i];
+            if (child instanceof Node) {
+                node.appendChild(child);
             }
-            else if (Array.isArray(item)) {
-                appendChildrenRecursively(node, item);
+            else if (Array.isArray(child)) {
+                appendChildrenRecursively(node, child);
             }
-            else if (item === false) {
+            else if (child === false) {
                 // The value false is ignored, to allow conditional display using && operator
             }
-            else if (item != null) {
-                node.appendChild(document.createTextNode(item));
+            else if (child != null) {
+                node.appendChild(document.createTextNode(child));
             }
         }
     }
