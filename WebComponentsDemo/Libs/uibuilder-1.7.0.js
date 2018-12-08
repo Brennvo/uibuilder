@@ -121,19 +121,19 @@ var UIBuilder;
         if (type === UIBuilder.Fragment) {
             return children;
         }
-        else if (typeof type === 'function') {
+        else if (typeof type === 'function') { // Is it a component class or a functional component?
             var _props = UIBuilder.clone(props);
             _props.children = children;
-            if (type.prototype.render) {
+            if (type.prototype.render) { // Is it a component class?
                 var component = new type(_props);
                 node = component.render();
                 applyComponentProps(component, props);
             }
-            else {
+            else { // It is a functional component
                 node = type(_props);
             }
         }
-        else {
+        else { // It is an HTML or SVG element
             if (svgElements[type]) {
                 node = document.createElementNS("http://www.w3.org/2000/svg", type);
             }
@@ -149,16 +149,16 @@ var UIBuilder;
     function appendChildrenRecursively(node, children) {
         for (var _i = 0, children_1 = children; _i < children_1.length; _i++) {
             var child = children_1[_i];
-            if (child instanceof Node) {
+            if (child instanceof Node) { // Is it an HTML or SVG element?
                 node.appendChild(child);
             }
-            else if (Array.isArray(child)) {
+            else if (Array.isArray(child)) { // example: <div>{items}</div>
                 appendChildrenRecursively(node, child);
             }
             else if (child === false) {
                 // The value false is ignored, to allow conditional display using && operator
             }
-            else if (child != null) {
+            else if (child != null) { // if item is not null or undefined
                 node.appendChild(document.createTextNode(child));
             }
         }
@@ -166,7 +166,7 @@ var UIBuilder;
     function applyElementProps(node, props) {
         for (var prop in props) {
             var value = props[prop];
-            if (value == null)
+            if (value == null) // if value is null or undefined
                 continue;
             if (prop === 'ref') {
                 if (typeof value === 'function') {
@@ -182,7 +182,7 @@ var UIBuilder;
             else if (typeof value === 'function') {
                 node.addEventListener(prop, value);
             }
-            else if (prop === 'style' && typeof value === 'object') {
+            else if (prop === 'style' && typeof value === 'object') { // Example: <div style={{height: "20px"}}></div>
                 for (var styleName in value) {
                     node.style[styleName] = value[styleName];
                 }

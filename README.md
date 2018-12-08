@@ -32,7 +32,7 @@ Web Components are user interface widgets that are written once and can be reuse
 
 Web Components are a W3 standard. The W3 page for Web Components can be found [here](https://www.w3.org/standards/techs/components).
 
-Note: Shadow DOM is currently implemented in Chrome, Opera and Safari. Firefox support is in development and [Edge will also support Shadow DOM](https://developer.microsoft.com/en-us/microsoft-edge/platform/status/shadowdom/). In the meantime you can use a [polyfill](https://github.com/webcomponents/).
+Note: Shadow DOM is currently implemented in Chrome, Firefox, Safari and Opera. With [Edge switching to Chromium](https://blogs.windows.com/windowsexperience/2018/12/06/microsoft-edge-making-the-web-better-through-more-open-source-collaboration/), support for Web Components is now universal.
 
 ## What it doesn't do
 Unlike React.js UIBuilder does not do incremental screen updates. 
