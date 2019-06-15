@@ -124,9 +124,8 @@
         if (type === Fragment) {
             return children;
         }
-        else if (typeof type === 'function') {   // Is it a component class or a functional component?
-            const _props = clone(props);
-            _props.children = children;
+        else if (typeof type === 'function') {   // Is it either a component class or a functional component?
+            const _props = { ...props, children } as P;
             if (type.prototype.render) {   // Is it a component class?
                 const component: Component<P> = new type(_props);
                 node = component.render();

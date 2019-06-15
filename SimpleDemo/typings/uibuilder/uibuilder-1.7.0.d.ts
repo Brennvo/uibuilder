@@ -14,6 +14,3 @@ declare namespace UIBuilder {
     }
     function createElement<P extends UIBuilder.Props<Component<P>>>(type: any, props: P, ...children: any[]): JSX.Element | JSX.Element[];
 }
-declare namespace UIBuilder {
-    function clone<T>(obj: T): T;
-}

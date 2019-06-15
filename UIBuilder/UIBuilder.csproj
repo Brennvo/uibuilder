@@ -25,7 +25,6 @@
   <ItemGroup>
     <TypeScriptCompile Include="JSX.ts" />
     <TypeScriptCompile Include="UIBuilder.ts" />
-    <TypeScriptCompile Include="Utils.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="tsconfig.json" />

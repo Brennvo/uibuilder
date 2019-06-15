@@ -1,3 +1,14 @@
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var UIBuilder;
 (function (UIBuilder) {
     var attribMap = {
@@ -121,9 +132,8 @@ var UIBuilder;
         if (type === UIBuilder.Fragment) {
             return children;
         }
-        else if (typeof type === 'function') { // Is it a component class or a functional component?
-            var _props = UIBuilder.clone(props);
-            _props.children = children;
+        else if (typeof type === 'function') { // Is it either a component class or a functional component?
+            var _props = __assign({}, props, { children: children });
             if (type.prototype.render) { // Is it a component class?
                 var component = new type(_props);
                 node = component.render();
@@ -210,17 +220,4 @@ var UIBuilder;
             }
         }
     }
-})(UIBuilder || (UIBuilder = {}));
-var UIBuilder;
-(function (UIBuilder) {
-    function clone(obj) {
-        var target = {};
-        for (var field in obj) {
-            if (obj.hasOwnProperty(field)) {
-                target[field] = obj[field];
-            }
-        }
-        return target;
-    }
-    UIBuilder.clone = clone;
 })(UIBuilder || (UIBuilder = {}));

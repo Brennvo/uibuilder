@@ -17,7 +17,9 @@
         );
         this.shadowRoot.appendChild(container);
 
-        $.ajax('elements/ZxListEditor.css').done(css => {
+        fetch('elements/ZxListEditor.css').then(response => {
+            return response.text();
+        }).then(css => {
             this.shadowRoot.appendChild(<style>{css}</style>);
         });
     }

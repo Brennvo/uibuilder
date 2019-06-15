@@ -41,7 +41,7 @@ A valid approach to update the screen is to divide your page into multiple compo
 
 ```typescript
  const element = UIBuilder.createElement<CustomerPanelProps>(CustomerPanel, { customerInfo: freshCustomerInfo });
- $page.find(".customer-panel").replaceWith(element);
+ document.querySelector(".customer-panel").replaceWith(element);
 ```
 
 ## Why not just use React?
