@@ -9,7 +9,8 @@
         this.attachShadow({ mode: 'open' });
 
         const container = (
-            <div class="container" tabindex="0" ref={el => this.container = el} onKeyDown={ev => this.onContainerKeyDown(ev)} onClick={ev => this.onContainerClick(ev)}>
+            <div class="container" tabindex="0" ref={el => this.container = el}
+                           onKeyDown={ev => this.onContainerKeyDown(ev)} onClick={ev => this.onContainerClick(ev)}>
                 <input type="text" ref={el => this.textInput = el} onKeyDown={ev => this.onTextInputKeyDown(ev)} />
             </div>
         );

@@ -1,5 +1,4 @@
-﻿/// <reference path="../../typings/jquery/jquery.d.ts" />
-/// <reference path="../../Models/Product.ts" />
+﻿/// <reference path="../../Models/Product.ts" />
 
 namespace Demo.Views {
     export interface TabsProps extends UIBuilder.Props<Tabs> {
@@ -14,15 +13,15 @@ namespace Demo.Views {
         }
 
         private onClick(event: Event): void {
-            const $tab = $(event.target);
-            if ($tab.hasClass('tab')) {
-                const $tabs = $(event.currentTarget);
-                $tabs.find('.tab').removeClass('selected');
+            const tab = event.target as HTMLElement;
+            if (tab.classList.contains('tab')) {
+                const tabs = event.currentTarget as HTMLElement;
+                Array.from(tabs.querySelectorAll('.tab')).forEach(tab => tab.classList.remove('selected'));
 
-                $tab.addClass('selected');
+                tab.classList.add('selected');
 
-                const index = $tab.data('index');
-                this.props.onTabSelected(index);
+                const index = tab.dataset['index'];
+                this.props.onTabSelected(+index);
             }
         }
 

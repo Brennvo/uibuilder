@@ -1,6 +1,4 @@
-﻿/// <reference path="../../typings/jquery/jquery.d.ts" />
-
-namespace Demo.Views {
+﻿namespace Demo.Views {
     export interface DropdownProps extends UIBuilder.Props<Dropdown> {
         title: string;
     }
@@ -20,7 +18,8 @@ namespace Demo.Views {
         }
 
         private onClick(event: Event): void {
-            $(this.child).show().focus();
+            this.child.classList.remove('hidden');
+            this.child.focus();
         }
 
         public render(): JSX.Element {
@@ -33,7 +32,7 @@ namespace Demo.Views {
                 throw new Error("Child of Dropdown must be an HTMLElement");
             }
 
-            $(this.child).hide();
+            this.child.classList.add('hidden');
 
             return (
                 <div className="dropdown">

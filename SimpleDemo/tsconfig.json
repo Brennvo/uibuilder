@@ -3,6 +3,7 @@
   "compilerOptions": {
     "out": "Generated/demo.js",
     "sourceMap": true,
+    "lib": [ "es6", "dom" ],
     "jsx": "react",
     "reactNamespace": "UIBuilder"
   }
