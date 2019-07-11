@@ -44,6 +44,8 @@ A valid approach to update the screen is to divide your page into multiple compo
  document.querySelector(".customer-panel").replaceWith(element);
 ```
 
+This is not as convenient as a setState call in React. For small applications React's setState works very well because you don't have to know what portions of the UI need to be updated. Larger React applications need to implement shouldComponentUpdate for performance optimization. At that point the convenience is gone, and all the incantations, rituals and ceremony of React got you nothing.
+
 ## Why not just use React?
 
 React does not have the equivalent of a Shadow DOM. React components are brittle. The brittleness comes from the global nature of HTML, CSS, and JS. The DOM tree inside a React component isn't encapsulated from the rest of the page. This lack of encapsulation means your document stylesheet might accidentally apply to parts inside the widget; your JavaScript might accidentally modify parts inside the widget; your IDs might overlap with IDs inside the component; and so on. (More on Shadow DOM [here](https://www.html5rocks.com/en/tutorials/webcomponents/shadowdom).)
