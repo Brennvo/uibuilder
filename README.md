@@ -44,7 +44,7 @@ A valid approach to update the screen is to divide your page into multiple compo
  document.querySelector(".customer-panel").replaceWith(element);
 ```
 
-This is not as convenient as a setState call in React. For small applications React's setState works very well because you don't have to know what portions of the UI need to be updated. Larger React applications need to implement shouldComponentUpdate for performance optimization. At that point the convenience is gone, and all the incantations, rituals and ceremony of React got you nothing.
+If you think this is not as convenient as a setState call in React you're correct but you're forgetting how much rigmarole React puts you through. For small applications React's setState works very well because you don't have to know what portions of the UI need to be updated. Larger React applications need to implement shouldComponentUpdate for performance optimization. At that point the convenience is gone, and all the incantations, rituals and ceremony of React got you nothing.
 
 ## Why not just use React?
 
