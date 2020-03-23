@@ -25,14 +25,12 @@
   <ItemGroup>
     <Content Include="Assets\app.css" />
     <Content Include="Assets\font-awesome.min.css" />
-    <Content Include="elements\ZxListEditor.css" />
     <Content Include="index.html" />
     <Content Include="Libs\uibuilder-1.7.0.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
-    <TypeScriptCompile Include="elements\KeyCodes.ts" />
     <TypeScriptCompile Include="elements\ZxListEditor.tsx" />
     <TypeScriptCompile Include="typings\browser\ambient\shadow-dom\index.d.ts" />
   </ItemGroup>

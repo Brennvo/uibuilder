@@ -133,7 +133,7 @@ var UIBuilder;
             return children;
         }
         else if (typeof type === 'function') { // Is it either a component class or a functional component?
-            var _props = __assign({}, props, { children: children });
+            var _props = __assign(__assign({}, props), { children: children });
             if (type.prototype.render) { // Is it a component class?
                 var component = new type(_props);
                 node = component.render();

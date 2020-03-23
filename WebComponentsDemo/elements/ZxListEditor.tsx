@@ -16,11 +16,7 @@
         );
         this.shadowRoot.appendChild(container);
 
-        fetch('elements/ZxListEditor.css').then(response => {
-            return response.text();
-        }).then(css => {
-            this.shadowRoot.appendChild(<style>{css}</style>);
-        });
+        this.shadowRoot.appendChild(<style>{css}</style>);
     }
 
     public get items(): any[] {
@@ -83,23 +79,23 @@
         let index = items.indexOf(selected);
         if (index == -1)
             return;
-        switch (ev.which) {
-            case KeyCodes.Backspace:
-            case KeyCodes.Delete:
+        switch (ev.key) {
+            case "Backspace":
+            case "Delete":
                 selected.remove();
                 this.resizeTextInput();
                 break;
-            case KeyCodes.LeftArrow:
+            case "LeftArrow":
                 if (index > 0)
                     index--;
                 break;
-            case KeyCodes.RightArrow:
+            case "RightArrow":
                 index++;
                 break;
-            case KeyCodes.Home:
+            case "Home":
                 index = 0;
                 break;
-            case KeyCodes.End:
+            case "End":
                 index = items.length - 1;
                 break;
         }
@@ -117,7 +113,7 @@
 
     private onTextInputKeyDown(ev: KeyboardEvent): void {
         const text = this.textInput.value;
-        if (ev.which === KeyCodes.Backspace) {
+        if (ev.key === "Backspace") {
             if (text.length === 0) {
                 // Pressing backspace when text input is empty should select the item before the text input.
                 this.deselectAll();
@@ -130,7 +126,7 @@
                 ev.preventDefault();
             }
         }
-        else if (this.isItemSeparator(ev.which)) {
+        else if (this.isItemSeparator(ev.key)) {
             ev.preventDefault();
             if (text) {
                 this.finalizeItem(text);
@@ -188,9 +184,63 @@
         this.textInput.style.width = availableWidth + 'px';
     }
 
-    private isItemSeparator(key: number): boolean {
-        return key === KeyCodes.Comma || key === KeyCodes.Enter;
+    private isItemSeparator(key: string): boolean {
+        return key === "," || key === "Enter";
     }
 }
 
 window.customElements.define('zx-listeditor', ZxListEditor);
+
+const css = `
+:host {
+}
+
+.container {
+    border: 1px solid #b3b3b3;
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 0;
+    width: 500px;
+    height: 175px;
+    padding: 3px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    outline: none;
+}
+
+input[type=text] {
+    outline: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+.item {
+    display: inline-block;
+    font-size: 14px;
+    background-color: #E4EEFA;
+    border: 1px solid #B3CAF1;
+    padding: 0px 5px 1px 5px;
+    border-radius: 10px;
+    margin-right: 3px;
+    margin-bottom: 3px;
+    cursor: default;
+}
+
+.selected-item {
+    background-color: #C7DEF9;
+    border-color: #A0BCE8;
+}
+
+.delete-item-button:after {
+    margin-left: 3px;
+    color: #999;
+    font-family: 'FontAwesome';
+    content: "\f00d";
+}
+
+.delete-item-button:hover:after {
+    color: #555;
+}
+`;
