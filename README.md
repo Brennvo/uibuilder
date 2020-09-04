@@ -30,7 +30,7 @@ TypeScript's implementation of JSX is [TSX](https://basarat.gitbooks.io/typescri
 
 Web Components are user interface widgets that are written once and can be reused reliably on multiple pages and Web sites. The reliability comes from the fact that the DOM tree inside a Web Component is encapsulated from the rest of the page, so you don't have to worry about things like conflicting id and style class names or JavaScript variables. The technology that enables this isolation is Shadow DOM. Read more about it [here](https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom).
 
-Web Components are a W3 standard. The W3 page for Web Components can be found [here](https://www.w3.org/standards/techs/components).
+Web Components are a W3 standard. The W3 page for Web Components can be found [here](https://www.w3.org/wiki/WebComponents/).
 
 Shadow DOM is currently implemented by all browsers, including Chrome, Edge, Firefox and Safari.
 
